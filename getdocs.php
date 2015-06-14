@@ -3,9 +3,9 @@ include('db_connect.php');
 
 $result = array();
 
-$req = "SELECT type, id, nom, extension FROM docs WHERE uv=".$_POST['uv'];
+$req = "SELECT type, id, nom, extension FROM docs WHERE uv='".$_POST['uv']."' ORDER BY type;";
 
-$retour = mysql_query($req);
+$retour = db_query($req);
 
 while (($row = mysql_fetch_array($retour)) != 0) {
 	$uv = array (
@@ -17,6 +17,6 @@ while (($row = mysql_fetch_array($retour)) != 0) {
 
 	array_push($result, $uv);
 }
-
+// var_dump($result);
 echo json_encode($result);
 ?>
