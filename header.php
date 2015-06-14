@@ -70,6 +70,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <li class="dropdown">
               	<a class= "dropdown-toggle" href="ajout.php">Ajout Fichier</a>
               	<li class="divider-vertical"></li>
+              	<li class="dropdown">
+              	
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   UVs
                   <span class="caret"></span>
