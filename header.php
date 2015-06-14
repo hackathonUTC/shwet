@@ -1,3 +1,4 @@
+ <?php header('Access-Control-Allow-Origin: *'); ?>
  <?php
 session_start();
 require_once 'CAS.class.php';
