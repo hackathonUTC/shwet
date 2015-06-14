@@ -1,12 +1,13 @@
 CREATE TABLE docs (
 	id CHAR(10) PRIMARY KEY,
-	uv CHAR(4) NOT NULL,
-	type CHAR(2) NOT NULL,
+	uv VARCHAR(5) NOT NULL,
+	type VARCHAR(10) NOT NULL,
 	nom VARCHAR(255) NOT NULL,
 	extension VARCHAR(4)
 );
 
 CREATE TABLE uvbranche (
 	branche VARCHAR(3) NOT NULL,
-	uv CHAR(4) NOT NULL
+	uv CHAR(4) NOT NULL,
+	titreuv VARCHAR(255) NOT NULL
 );

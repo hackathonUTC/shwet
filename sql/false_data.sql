@@ -38,10 +38,11 @@ CREATE TABLE IF NOT EXISTS `docs` (
 --
 
 INSERT INTO `docs` (`id`, `uv`, `type`, `nom`) VALUES
-('AZERTHJKLM', 'LO21', 'PR', 'Un projet, m''voilà'),
-('AZERTYUIOP', 'NF17', 'PR', 'Projet de NF17'),
-('QSDFGHJKLM', 'LO21', 'TD', 'Un TD de LO21, ça sert à rien'),
-('QSDFGYUIOP', 'SR02', 'TP', 'Un tp avec des sémaphore et tout... (ils ont des TPs en SR02?)');
+('AZERT', 'LO21', 'PR', 'Un projet, mvoila'),
+('AZERG', 'NF17', 'PR', 'Projet de NF17'),
+('QSDDF', 'LO21', 'TD', 'Un TD de LO21, ca sert a rien'),
+('QADFR', 'SR02', 'TP', 'Un tp avec des sémaphore et tout... (ils ont des TPs en SR02?)'),
+('QSAZD', 'BL01', 'TP', 'Bla bla blaaaa');
 
 --
 -- Index pour les tables exportées
