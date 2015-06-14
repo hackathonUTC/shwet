@@ -51,7 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <input style="width: 150px;" name="u" autocomplete="on
                 " id="search-uv-name" class="search-query span2" type="text" placeholder="Rechercher une UV">
                 <button type="submit" class="btn btn-primary search-uv-button">
-                  <img height="20" width="20" src="img/loupe.ico"></a>
+                  <img height="20" width="20" src="img/loupe.ico">
                 </button>
               </div>
         </form>
@@ -82,7 +82,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <li><a href="branche.php?b=all">Ordre Alphabétique</a></li>
                 </ul>
               </li>
-              </li>
+            </li>
 		<li class="divider-vertical"></li>
           <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
