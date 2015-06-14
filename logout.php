@@ -1,6 +1,6 @@
 <?php
 session_start();
-delete $_SESSION["user"];
+session_destroy();
 
 require_once 'CAS.class.php';
 CAS::logout();
