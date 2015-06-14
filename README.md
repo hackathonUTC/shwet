@@ -5,6 +5,7 @@ Fonctionnalités disponibles :
 Consultation des documents par UV/Branche
 
 Fonctionnalités souhaitées : 
+** Revoir le compteur de document
 ** Ajout de fichier (+ liens vers annales collaboratives)
 ** Système de "+" "-" sur les documents pour les ranger par popularité
 
