@@ -1,7 +1,7 @@
  <?php
 session_start();
 require_once 'CAS.class.php';
-if (!isset($_SESSION['user']))
+if (isset($_SESSION['user']))
 {
 	$user = CAS::authenticate();
 	if ($user != -1) $_SESSION['user'] = $user;
@@ -72,6 +72,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <li class="dropdown">
               	<a class= "dropdown-toggle" href="ajout.php">Ajout Fichier</a>
               	<li class="divider-vertical"></li>
+              	<li class="dropdown">
+              	
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   UVs
                   <span class="caret"></span>
