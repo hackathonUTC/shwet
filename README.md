@@ -1,7 +1,7 @@
 #Shwet
 
 ###*Fonctionnalités disponibles :*
-*Consultation des documents par UV/Branche
+* Consultation des documents par UV/Branche
 
 ###*Fonctionnalités souhaitées :* 
 * Ajout de fichier (+ liens vers annales collaboratives)
@@ -12,7 +12,7 @@
 * Corriger problèmes affichage
 
 ###*Technologie :*
-*Backend PHP
-*Base MySQL
-*Tous le code javaScript est présent dans un container Google Tag Manager. Contacter nicolasszewe[at]gmail.com pour avoir les droits. 
+* Backend PHP
+* Base MySQL
+* Tous le code javaScript est présent dans un container Google Tag Manager. Contacter nicolasszewe[at]gmail.com pour avoir les droits. 
 
