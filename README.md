@@ -18,7 +18,7 @@
 * Système de "+" "-" sur les documents pour les ranger par popularité
 * Corriger problèmes affichage
 * Revoir le style, surtout les :hovers et les :focus
-* La connexion n'est pas très bonne, à revoir. Empêche parfois de passer des paramètres en POST
+* La connexion n'est pas très bonne, à revoir. Empêche parfois de passer des paramètres en POST (perte d'info lors du renvoi d'informations)
 
 ###*Technologie :*
 * Backend PHP
