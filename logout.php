@@ -1,7 +1,7 @@
 <?php
-session_save_path('sess');
 session_start();
-$_SESSION = array();
+delete $_SESSION["user"];
+
 require_once 'CAS.class.php';
 CAS::logout();
 ?>
