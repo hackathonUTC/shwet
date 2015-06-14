@@ -2179,15 +2179,15 @@ input[type="button"].btn-block {
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #72b8b1;
-  background-image: -moz-linear-gradient(top, #72bbaa, #72b4bb);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#72bbaa), to(#72b4bb));
-  background-image: -webkit-linear-gradient(top, #72bbaa, #72b4bb);
-  background-image: -o-linear-gradient(top, #72bbaa, #72b4bb);
-  background-image: linear-gradient(to bottom, #72bbaa, #72b4bb);
+  background-color: #A491C5;
+  background-image: -moz-linear-gradient(top, #A491C5, #A491C5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#A491C5), to(#A491C5));
+  background-image: -webkit-linear-gradient(top, #A491C5, #A491C5);
+  background-image: -o-linear-gradient(top, #A491C5, #A491C5);
+  background-image: linear-gradient(to bottom, #A491C5,#A491C5);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff72bbaa', endColorstr='#ff72b4bb', GradientType=0);
-  border-color: #72b4bb #72b4bb #499097;
+  border-color: #A491C5 #A491C5 #499097;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #72b4bb;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
