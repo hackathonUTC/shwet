@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'verify_connection.php';
 include 'header.php';
 ?>
 		<div class="container main-container">

@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           </a>
             <a class="brand" href="shwet.php">
-              <img height="50" width="50" src="img/logo.png">
+              <img height="50" width="112" src="img/logo.png">
             </a>
            <form id="search-uv-form" class="form-search navbar-search" method="GET" action="uv.php">
               <div class="input-append">

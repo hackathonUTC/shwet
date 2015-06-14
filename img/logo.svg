@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="122.77664"
-     inkscape:cy="95.532004"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="201.40316"
+     inkscape:cy="111.7717"
      inkscape:document-units="px"
      inkscape:current-layer="g4189"
      showgrid="false"
@@ -51,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -64,12 +64,12 @@
        id="g4189"
        transform="translate(6.8646854,-0.45425427)">
       <rect
-         style="fill:#220055;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="rect4214"
-         width="200.01021"
-         height="199.50513"
-         x="214.35872"
-         y="855.3316" />
+         style="fill:#441650;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4148"
+         width="578.4837"
+         height="242.85715"
+         x="-42.578972"
+         y="840.67358" />
       <path
          style="fill:#6f7c91;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="M 134.92103,935.31641 C 138.7323,1013.353 125.4508,1029.2718 92.421025,1049.245 61.807065,1029.9392 41.433467,1010.5139 50.635315,935.67356 Z"
@@ -101,6 +101,18 @@
          cx="110"
          id="path4171-6"
          style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    </g>
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot4140"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         transform="translate(21.419586,878.78451)"><flowRegion
+           id="flowRegion4142"><rect
+             id="rect4144"
+             width="328.57141"
+             height="140"
+             x="185.71428"
+             y="41.428574" /></flowRegion><flowPara
+           id="flowPara4146"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;font-family:Purisa;-inkscape-font-specification:Purisa;fill:#ffffff">Shwet</flowPara></flowRoot>    </g>
   </g>
 </svg>
