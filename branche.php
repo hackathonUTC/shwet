@@ -25,9 +25,7 @@ include 'header.php';
 <div class="page-header text-center">
 	<div class="row-fluid">
 		<div class="offset2 span8">
-	<div id="title"><h1></h1></div>	
-	<h2> Toutes les UVs <small>Ordre Alphabétique</small></h2>
-		</div>
+	<div id="title"><h1></h1></div>			</div>
 	</div>
 </div>
 
