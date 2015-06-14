@@ -1,6 +1,6 @@
 #Shwet
 
-###*Fonctionnalités disponibles : *
+###*Fonctionnalités disponibles :*
 *Consultation des documents par UV/Branche
 
 ###*Fonctionnalités souhaitées :* 
@@ -11,7 +11,7 @@
 * Revoir le compteur de document (quand ils sont tous listés vs. par branche)
 * Corriger problèmes affichage
 
-###*Technologie : *
+###*Technologie :*
 *Backend PHP
 *Base MySQL
 *Tous le code javaScript est présent dans un container Google Tag Manager. Contacter nicolasszewe[at]gmail.com pour avoir les droits. 
