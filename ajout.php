@@ -17,17 +17,17 @@ include 'header.php';
                 <input style="width: 1000px;" name="u" autocomplete="on" id="big-search-uv-name" class="search-query span2" type="text" placeholder="Rechercher une UV">
               </div>
               <br>
-            <label for="selectType">Type :</label> <select id="selectType">  					
+            <label for="selectType">Type :</label> <select id="selectType" required>  					
               		<option value="TD">TD</option>
   					<option value="TP">TP</option>
   					<option value="annales">Annales</option>
   					<option value="autres">autres</option>
 			</select><br>
-			<label for="nomfichier">Nom Fichier :</label> <input id ="nomfichier" type ="text"><br>
+			<label for="nomfichier">Nom Fichier :</label> <input required id ="nomfichier" type ="text"><br>
             <label for="note">Note :</label><input id = "note" type="number" step="0.25" min="0" max="20"><br>
-			<label for="semestre">Semestre :</label><input id ="semestre" type ="text"><br>
+			<label for="semestre">Semestre :</label><input id ="semestre" required type ="text"><br>
 			<label for="commentaire">Commentaire :</label><input id ="commentaire" type ="text"><br>
-			<input type="file" name="fichier" />
+			<input type="file" name="fichier" required/>
 			<input type="hidden" name="MAX_FILE_SIZE" value="5008576" />
 			<input TYPE="submit" NAME="nom" value=" Envoyer ">
 
