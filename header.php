@@ -59,7 +59,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <ul class="nav pull-right">
             
               <li class="dropdown">
-              	<a class= "dropdown-toggle" href="ajout.php">Ajout Fichier</a>
+              	<a class= "dropdown-toggle" href="ajout.php">Envoyer un fichier</a>
               	<li class="divider-vertical"></li>
               	<li class="dropdown">
               	

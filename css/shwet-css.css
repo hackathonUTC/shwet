@@ -12,16 +12,32 @@
 }
 
 #search-uv-name {
-	border-color: rgba(82, 168, 236, 0.8);
+	border-color: rgba(195, 158, 234, 0.8);
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(156, 82, 236, 0.6);
 }
 
-#search-uv-button {
-	background-image: linear-gradient(to bottom, #AC98D2, #6F629C);
+.btn-primary {
+	background-image: linear-gradient(to bottom, #CCC9E9, #8B81A8);
+	background-color: #A491C5;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {
+	background-color: #492F8F;
+	background-image: linear-gradient(to bottom, #817299, #3D1C83);
+}
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+    border-color: rgba(177, 165, 239, 0.8);
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(214, 203, 239, 0.6);
 }
 
 .navbar .nav > li > a {
     text-shadow: 0px 1px 0px #A95FDD;
+}
+
+.dropdown:focus {
+	background-color: #492F8F;
 }
 
 li.dropdown :hover {
@@ -31,7 +47,7 @@ li.dropdown :hover {
 .navbar .divider-vertical {
 	border-left: 1px solid #463453;
 	border-right: 1px solid #A95FDD;
-	height: 87px;
+	height: 75px;
 }
 
 li.dropdown {
@@ -40,4 +56,16 @@ li.dropdown {
 
 .main-container{
 	padding-top: 60px;
+}
+
+a {
+    color: #AC8AD1;
+}
+
+a:hover {
+    color: #6C18C6;
+}
+
+a:focus{
+    color: #6C18C6;
 }
