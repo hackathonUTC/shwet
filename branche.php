@@ -1,8 +1,10 @@
-<?php include 'header.php';?>
-
+<?php
+session_start();
+include 'header.php';
+?>
 
 <br><br>
-<div class="container">        
+<div class="container main-container">
 <div class="row-fluid">
 	<div class="span12">
 		<ul class="nav nav-tabs">

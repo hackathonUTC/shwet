@@ -19,3 +19,25 @@
 #search-uv-button {
 	background-image: linear-gradient(to bottom, #AC98D2, #6F629C);
 }
+
+.navbar .nav > li > a {
+    text-shadow: 0px 1px 0px #A95FDD;
+}
+
+li.dropdown :hover {
+    color: #FFF;
+}
+
+.navbar .divider-vertical {
+	border-left: 1px solid #463453;
+	border-right: 1px solid #A95FDD;
+	height: 87px;
+}
+
+li.dropdown {
+	margin-top: 15px;
+}
+
+.main-container{
+	padding-top: 60px;
+}

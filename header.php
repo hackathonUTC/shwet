@@ -87,7 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   <i class="icon-user icon-white"></i> 
-                                      <span><?php echo $user; ?></span>
+                                      <span><?php echo $_SESSION['user']; ?></span>
                                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">

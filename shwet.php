@@ -1,6 +1,9 @@
-<?php include 'header.php';?>
+<?php
+session_start();
+include 'header.php';
+?>
 
-<div class="container">
+<div class="container main-container">
 
       <div class="row-fluid">
         <div class="row-fluid">
