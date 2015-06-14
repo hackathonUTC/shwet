@@ -66,6 +66,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </form>
           <div class="nav-collapse collapse navbar-responsive-collapse">
             <ul class="nav pull-right">
+            	<a href="ajout.php">Ajout Fichier</a>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   UVs
