@@ -93,7 +93,7 @@ else CAS::login();
           <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   <i class="icon-user icon-white"></i> 
-                                      <span><?php $user ?></span>
+                                      <span><?php echo $user; ?></span>
                                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
