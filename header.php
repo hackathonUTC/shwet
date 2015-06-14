@@ -3,8 +3,8 @@
 <?php
 session_save_path('sess');
 session_start();
-require_once 'incl/CONF.class.php';
-require_once 'incl/CAS.class.php';
+require_once 'CONF.class.php';
+require_once 'CAS.class.php';
 
 if (isset($_SESSION['user'])) require_once 'view/index.php';
 else
