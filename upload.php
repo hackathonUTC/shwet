@@ -11,16 +11,25 @@ function upload($index,$destination)
      return move_uploaded_file($_FILES[$index]['tmp_name'],$destination);
 }
 
+    echo "<br><br><br><br>";
     var_dump($_POST);
-  	$uv = $_POST['u'];
+    echo "Is dir : ".(is_dir ( "./docs/FQ01/TD/" )?'oui':'non');
+    $uv = $strtoupper($_POST['u']);
     $type = $_POST['selectType'];
-  	$nom = $_POST['nomfichier'];
-  	$note = $_POST['note'];
-  	$semestre = $_POST['semestre'];
-  	$commentaire = $_POST['commentaire'];
-  	$filename = basename($_FILES['fichierUpload']['name']);
-	$ext = pathinfo($filename, PATHINFO_EXTENSION);  	
+    $nom = $_POST['nomfichier'];
+    $note = $_POST['note'];
+    $semestre = $_POST['semestre'];
+    $commentaire = $_POST['commentaire'];
+    $filename = basename($_FILES['fichierUpload']['name']);
+  $ext = pathinfo($filename, PATHINFO_EXTENSION);
 	
-  	$upload_fichier = upload($filename,"docs"+$uv+"/"+$type+"/"+$id+"/"+$ext);
+  // if (isUV($uv) && !is_dir( "./docs/".$uv ))
+  //   mkdir("./docs/".$uv, '0740');
 
+  // if (isType($type) && !is_dir( "./docs/".$uv."/".$type ))
+  //   mkdir("./docs/".$uv."/".$type, '0740');
+
+  	// $upload_fichier = upload($filename,"docs"+$uv+"/"+$type+"/"+$id+"/"+$ext);
+
+  // 
 ?>
