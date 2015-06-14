@@ -11,7 +11,7 @@ else
 	{
 		$_SESSION['user'] = $user;
 		$_SESSION['ticket'] = $_GET['ticket'];
-		header('Location: /shwet.html');
+		header('Location: shwet/shwet.html');
 	}
 	else CAS::login();
 }
