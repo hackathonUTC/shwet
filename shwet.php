@@ -9,7 +9,7 @@
         <h1>Bienvenue sur Shwet.</h1>
         <p>Pour consulter les documents d'une UV ou pour donner les tiens, tape son nom dans la barre de recherche (par exemple, "MT23").</p>
       </div>
-       <form id="search-uv-form" class="form-search navbar-search" method="GET" action="uv.php">
+       <form id="big-search-uv-form" class="form-search navbar-search" method="GET" action="uv.php">
               <div class="input-append">
                 <input style="width: 1000px;" name="u" autocomplete="on" id="search-uv-name" class="search-query span2" type="text" placeholder="Rechercher une UV">
                 <button type="submit" class="btn btn-primary">
