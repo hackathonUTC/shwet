@@ -33,18 +33,7 @@ include 'header.php';
 
 
         </form>
-        <div id="uploadProgress">
-	<h1>Chargement...</h1>
-	<div id="uploadProgressBar" class="progressBar"><span style="width: 0%"></span></div>
-	<p id="uploadProgressPercent"></p>
-</div><!--uploadProgress-->
-
-<div id="uploadResult">
-	<h1>Résultat</h1>
-	<div></div>
-</div><!--uploadResult-->
-
-	</div>
+</div>
 </div>
 
   </body>
