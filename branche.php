@@ -8,15 +8,15 @@ include 'header.php';
 <div class="row-fluid">
 	<div class="span12">
 		<ul class="nav nav-tabs">
-                  <li id="GBSelecteur"><a  href="branche.html?b=GB">GB</a></li>
-                  <li id="GISelecteur"><a  href="branche.html?b=GI">GI</a></li>
-                  <li id="GMSelecteur"><a  href="branche.html?b=GM">GM</a></li>
-                  <li id="GPSelecteur"><a  href="branche.html?b=GP">GP</a></li>
-                  <li id="GSMSelecteur"><a  href="branche.html?b=GSM">GSM</a></li>
-                  <li id="GSUSelecteur"><a  href="branche.html?b=GSU">GSU</a></li>
-                  <li id="TCSelecteur"><a  href="branche.html?b=TC">TC</a></li>
-                  <li id="TSHSelecteur"><a  href="branche.html?b=TSH">TSH</a></li>
-                  <li id="ALLSelecteur"><a  href="branche.html?b=all">Toutes</a></li>
+                  <li id="GBSelecteur"><a  href="branche.php?b=GB">GB</a></li>
+                  <li id="GISelecteur"><a  href="branche.php?b=GI">GI</a></li>
+                  <li id="GMSelecteur"><a  href="branche.php?b=GM">GM</a></li>
+                  <li id="GPSelecteur"><a  href="branche.php?b=GP">GP</a></li>
+                  <li id="GSMSelecteur"><a  href="branche.php?b=GSM">GSM</a></li>
+                  <li id="GSUSelecteur"><a  href="branche.php?b=GSU">GSU</a></li>
+                  <li id="TCSelecteur"><a  href="branche.php?b=TC">TC</a></li>
+                  <li id="TSHSelecteur"><a  href="branche.php?b=TSH">TSH</a></li>
+                  <li id="ALLSelecteur"><a  href="branche.php?b=all">Toutes</a></li>
 		</ul>
 	</div>
 </div>

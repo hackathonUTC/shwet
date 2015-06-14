@@ -15,7 +15,7 @@ include 'header.php';
       </div>
        <form id="big-search-uv-form" class="form-search navbar-search" method="GET" action="uv.php">
               <div class="input-append">
-                <input style="width: 1000px;" name="u" autocomplete="on" id="search-uv-name" class="search-query span2" type="text" placeholder="Rechercher une UV">
+                <input style="width: 1000px;" name="u" autocomplete="on" id="big-search-uv-name" class="search-query span2" type="text" placeholder="Rechercher une UV">
                 <button type="submit" class="btn btn-primary">
                   <img height="20" width="20" src="img/loupe.ico"></a>
                 </button>
