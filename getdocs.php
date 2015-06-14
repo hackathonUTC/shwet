@@ -3,12 +3,13 @@ include('db_connect.php');
 
 $result = array();
 
-$req = "SELECT type, id, nom, extension FROM docs WHERE uv='".$_POST['uv']."' ORDER BY type;";
+$req = "SELECT uv, type, id, nom, extension FROM docs WHERE uv='".$_POST['uv']."' ORDER BY type;";
 
 $retour = db_query($req);
 
 while (($row = mysql_fetch_array($retour)) != 0) {
 	$uv = array (
+		'uv' => $row['uv'],
 		'type' => $row['type'],
 		'id' => $row['id'],
 		'nom' => $row['nom'],
