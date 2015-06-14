@@ -1,5 +1,5 @@
 <?php
-require_once '/xmlToArrayParser.class.php';
+require_once 'xmlToArrayParser.class.php';
 class CAS
 {
 	const URL = 'https://cas.utc.fr/cas/';
