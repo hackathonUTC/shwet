@@ -12,7 +12,7 @@ include 'header.php';
         <h3>Ajout d'un fichier</h3>
       </div>
         <form id="big-search-uv-form" class="form-search navbar-search" enctype="multipart/form-data" method="POST"
-         action="javascript:dataLayer.push({'event' : 'formulaireEnvoi'})">
+         action="upload.php">
               <div class="input-append">
                 <input style="width: 1000px;" name="u" autocomplete="on" id="big-search-uv-name" class="search-query span2" type="text" placeholder="Rechercher une UV">
               </div>
@@ -29,11 +29,10 @@ include 'header.php';
 			<label for="commentaire">Commentaire :</label><input id ="commentaire" type ="text"><br>
 			<input type="file" name="fichier" required/>
 			<input type="hidden" name="MAX_FILE_SIZE" value="5008576" />
-			<input TYPE="submit" NAME="nom" value=" Envoyer ">
+			<input TYPE="submit" NAME="nom" value=" Envoyer " onclick="javascript:dataLayer.push({'event' : 'formulaireEnvoi'})">
 
 
         </form>
-        <iframe id="hiddenmyiframe" style="display:none;"/>
 
 </div>
 </div>
