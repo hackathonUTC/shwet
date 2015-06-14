@@ -1,4 +1,9 @@
 <?php
+include 'verify_connection.php';
+include 'header.php';
+?>
+
+<?php
 function upload($index,$destination)
 {
    //Test1: fichier correctement uploadé
