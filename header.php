@@ -77,7 +77,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </li>
               </li>
               <?php
-session_save_path('sess');
 session_start();
 require_once 'CAS.class.php';
 if (!isset($_SESSION['user']))
