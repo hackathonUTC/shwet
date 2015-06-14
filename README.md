@@ -11,9 +11,6 @@
 
 ###*Bugs :*
 * Revoir le compteur de document (quand ils sont tous listés vs. par branche)
-
-###*Bugs :*
-* Revoir le compteur de document (quand ils sont tous listés vs. par branche)
 * Ajout de fichier (+ liens vers annales collaboratives)
 * Système de "+" "-" sur les documents pour les ranger par popularité
 * Corriger problèmes affichage
