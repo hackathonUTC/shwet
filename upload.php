@@ -1,9 +1,8 @@
 <?php
 include 'verify_connection.php';
 include 'header.php';
-?>
 
-<?php
+
 function upload($index,$destination)
 {
    //Test1: fichier correctement uploadé
@@ -11,8 +10,10 @@ function upload($index,$destination)
    //Déplacement
      return move_uploaded_file($_FILES[$index]['tmp_name'],$destination);
 }
-  	$uv = $_POST['u'];  	
-	$type = $_POST['selectType'];
+
+    var_dump($_POST);
+  	$uv = $_POST['u'];
+    $type = $_POST['selectType'];
   	$nom = $_POST['nomfichier'];
   	$note = $_POST['note'];
   	$semestre = $_POST['semestre'];
@@ -22,4 +23,4 @@ function upload($index,$destination)
 	
   	$upload_fichier = upload($filename,"docs"+$uv+"/"+$type+"/"+$id+"/"+$ext);
 
-  ?>
+?>
