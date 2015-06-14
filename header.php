@@ -20,7 +20,7 @@
       <link rel="stylesheet" href="css/table-colors.css" type="text/css" />
       <link rel="stylesheet" href="css/shwet-css.css" type="text/css" />
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" language="javascript" src="js/bootstrap.min.js"></script>
 
