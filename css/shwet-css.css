@@ -106,3 +106,7 @@ li.ui-menu-item:focus{
 	background-image: linear-gradient(to bottom, #817299, #3D1C83);
 	color: #FFF;
 }
+
+.ui-helper-hidden-accessible{
+	display: none;
+}
