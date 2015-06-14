@@ -70,7 +70,7 @@ a:focus{
     color: #6C18C6;
 }
 
-.autocompletion{
+.ui-autocomplete{
 	position: fixed;
 	background-color: #FFF;
 	z-index: 1000;
