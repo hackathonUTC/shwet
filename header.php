@@ -61,7 +61,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class="input-append">
                 <input style="width: 150px;" name="u" autocomplete="on
                 " id="search-uv-name" class="search-query span2" type="text" placeholder="Rechercher une UV">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary search-uv-button">
                   <img height="20" width="20" src="img/loupe.ico"></a>
                 </button>
               </div>
