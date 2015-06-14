@@ -1,3 +1,14 @@
+ <?php
+session_start();
+require_once 'CAS.class.php';
+if (!isset($_SESSION['user']))
+{
+	$user = CAS::authenticate();
+	if ($user != -1) $_SESSION['user'] = $user;
+}
+else CAS::login();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -76,19 +87,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </ul>
               </li>
               </li>
-              <?php
-session_start();
-require_once 'CAS.class.php';
-if (!isset($_SESSION['user']))
-{
-	$user = CAS::authenticate();
-	if ($user != -1) $_SESSION['user'] = $user;
-}
-else CAS::login();
-?>
-
-           
-
 		<li class="divider-vertical"></li>
           <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
