@@ -110,3 +110,44 @@ li.ui-menu-item:focus{
 .ui-helper-hidden-accessible{
 	display: none;
 }
+
+.choiceConteneur {
+	display: flex;
+	flex-direction: row;
+	color: white;
+	justify-content: space-between;
+}
+
+.choiceItem{
+	padding: 20px;
+	background-color: #9D80C2;
+	border-radius: 5px;
+	margin: 10px;
+	margin-left:40px;
+	margin-right:40px;
+	flex: 1;
+	text-align:center;
+	line-heigth:140px;
+}
+
+.choiceItem.disabled{
+	background-color: #D7D7D7;
+}
+
+.formConteneur{
+	text-align: center;
+	padding-top: 40px;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: #C6B5E1;
+    border-radius: 2px;
+}
+
+li.nav-header:hover{
+	color: #999999;
+}
+
+a.dropdown-toggle{
+	color: red;
+}
