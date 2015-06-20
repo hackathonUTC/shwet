@@ -1,7 +1,4 @@
 <?php
-include 'verify_connection.php';
-include 'header.php';
-
 
 function upload($index,$destination)
 {

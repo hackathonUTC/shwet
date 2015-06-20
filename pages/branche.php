@@ -1,10 +1,3 @@
-<?php
-include 'verify_connection.php';
-include 'header.php';
-?>
-
-<br><br>
-<div class="container main-container">
 <div class="row-fluid">
 	<div class="span12">
 		<ul class="nav nav-tabs">
@@ -31,7 +24,3 @@ include 'header.php';
 
 <div id="list-container" class="row-fluid">
 </div>
-</div>
-    </div>
-  </body>
-</html>

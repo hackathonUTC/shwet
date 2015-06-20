@@ -114,8 +114,8 @@ li.ui-menu-item:focus{
 .choiceConteneur {
 	display: flex;
 	flex-direction: row;
-	color: white;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .choiceItem{
@@ -128,6 +128,12 @@ li.ui-menu-item:focus{
 	flex: 1;
 	text-align:center;
 	line-heigth:140px;
+	color: white;
+}
+
+.flexItem{
+	flex: 1;
+	text-align:center;
 }
 
 .choiceItem.disabled{
@@ -136,7 +142,8 @@ li.ui-menu-item:focus{
 
 .formConteneur{
 	text-align: center;
-	padding-top: 40px;
+	margin: 20px;
+	padding-top: 20px;
 }
 
 .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
@@ -150,4 +157,29 @@ li.nav-header:hover{
 
 a.dropdown-toggle{
 	color: red;
+}
+
+
+/* ====== Footer ======= */
+html,body{
+    height: 100%
+}
+
+#holder{
+    min-height: 100%;
+    position:relative;
+}
+
+.main-container{
+	padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+footer{
+	color: lightgray;
+    font-size: 10pt;
+    width:100%;
+    position: absolute;
+    left: 0;
+    bottom: 0; 
 }
