@@ -9,7 +9,7 @@
 
 
   <div class="flexItem" title="Fonctionnalité en préparation :)">
-    <div class="choiceItem disabled">
+    <div class="choiceItem active">
       <h3>Ajout d'un lien vers un document externe</h3>
     </div>
   </div>
@@ -25,7 +25,8 @@
       <!-- Formulaire -->
       <!-- <form id="big-search-uv-form" class="form-search navbar-search" enctype="multipart/form-data" method="POST" action="upload.php"> -->
       <div class="formConteneur">
-        <form enctype="multipart/form-data" method="POST" action="upload.php" id="formFichier">
+        <form enctype="multipart/form-data" method="POST" action="?page=upload" id="formFichier">
+          <input type="hidden" name="submitted_doc" value="file" />
           <div class="form-group">
             <!-- <div class="input-append"> -->
               <!-- <input style="width: 1000px;" name="u" autocomplete="on" id="big-search-uv-name" class="search-query span2"  type="text" placeholder="Rechercher une UV"> -->
@@ -35,10 +36,12 @@
             <div class="form-group">
               
               <select name="selectType" id="selectType" class="form-control" required>  					
-                    		<option value="TD">TD</option>
-        					<option value="TP">TP</option>
-        					<option value="annales">Annales</option>
-        					<option value="autres">autres</option>
+                <option value="TD">TD</option>
+                <option value="TP">TP</option>
+                <option value="Annale">Annale</option>
+                <option value="Rapport">Rapport</option>
+                <option value="Poster">Poster</option>
+                <option value="Autres">Autres</option>
         			</select>
             </div>
           <div class="form-group">
@@ -56,9 +59,7 @@
           <div class="form-group">
             <input type="file"  class="form-control" name="fichierUpload" id="fichierUpload" required/>
           </div>
-          <div class="form-group">
-            <input type="hidden" name="MAX_FILE_SIZE" value="5008576" />
-          </div>
+          <input type="hidden" name="MAX_FILE_SIZE" value="5008576" />
           <div class="form-group">
             <input TYPE="submit"  class="form-control" NAME="nom" value=" Envoyer " onclick="javascript:dataLayer.push({'event' : 'formulaireEnvoi'})">
           </div>
@@ -67,7 +68,8 @@
     </div>
     <div class="flexItem">
       <div class="formConteneur">
-        <form enctype="multipart/form-data" method="POST" action="upload.php" id="formFichier">
+        <form enctype="multipart/form-data" method="POST" action="?page=upload" id="formFichier">
+          <input type="hidden" name="submitted_doc" value="link" />
           <div class="form-group">
             <!-- <div class="input-append"> -->
               <!-- <input style="width: 1000px;" name="u" autocomplete="on" id="big-search-uv-name" class="search-query span2"  type="text" placeholder="Rechercher une UV"> -->
@@ -77,14 +79,19 @@
             <div class="form-group">
               
               <select name="selectType" id="selectType" class="form-control" required>            
-                        <option value="TD">TD</option>
-                  <option value="TP">TP</option>
-                  <option value="annales">Annales</option>
-                  <option value="autres">autres</option>
+                <option value="lTD">TD</option>
+                <option value="lTP">TP</option>
+                <option value="lAnnale">Annale ou correction</option>
+                <option value="lRapport">Rapport</option>
+                <option value="lPoster">Poster</option>
+                <option value="lAutres">Autres</option>
               </select>
             </div>
           <div class="form-group">
              <input required name="nomfichier"  class="form-control" id ="nomfichier" type ="text" placeholder="Nom du fichier"><br>
+          </div>
+          <div class="form-group">
+             <input required name="lien"  class="form-control" id ="lien" type ="text" placeholder="Lien vers le document"><br>
           </div>
           <div class="form-group">
             <input name="note"  class="form-control" id = "note" type="number" step="0.25" min="0" max="20" placeholder="Note obtenue"><br>

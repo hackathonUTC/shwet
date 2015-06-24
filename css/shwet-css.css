@@ -140,6 +140,10 @@ li.ui-menu-item:focus{
 	background-color: #D7D7D7;
 }
 
+.choiceItem.active{
+	background-color: #533A83;
+}
+
 .formConteneur{
 	text-align: center;
 	margin: 20px;

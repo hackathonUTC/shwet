@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include_once 'config.php';
 
 $db = mysql_select_db(DBNAME, mysql_connect(DBHOST,DBUSER,DBPSWD));
 if (mysql_errno()>0) {
