@@ -22,7 +22,7 @@ Deux cas de figure :
 #### Fichier
 * L'`id` est alors le nom du fichier dans le système de fichier.
 * L'`extension` correspond à l'extension dans le système de fichier.
-* Le `type` est parmis `TD`, `TP`, `Annale` (inclus les corrections du prof ou des étudiants), `Rapport`, `Poster`, `Autres`
+* Le `type` est parmis `TD`, `TP`, `Annale` (inclus les corrections du prof ou des étudiants), `Rapport` (inclus les projets), `Poster`, `Autres`
 
 #### Liens vers l'extérieur
 * L'`id` est alors la partie unique URL du fichier extérieur (raccourcie via bitly). L'id `1d9huUQ` correspond donc à http://bit.ly/1d9huUQ.

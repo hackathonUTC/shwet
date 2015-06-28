@@ -28,13 +28,30 @@ function insert($id, $uv, $type, $nom, $extension, $note, $semestre){
 }
 
 function isType($type, $isDoc){
-  var_dump($type);
-  if (( $isDoc && (($type == 'TD') || ($type == 'TP') || ($type == 'Annale') || ($type == 'Rapport') || ($type == 'Poster') || ($type == 'Autres') )) ||
-      (!$isDoc && (($type == 'lTD') || ($type == 'lTP') || ($type == 'lAnnale') || ($type == 'lRapport') || ($type == 'lPoster') || ($type == 'lAutres') )) )
-    return true;
-  else {
-    return false;
+  if ( $isDoc ){
+    $liste = array(
+      'TD',
+      'TP',
+      'Annale',
+      'Rapport',
+      'Poster',
+      'Autres'
+    );
+  } else {
+    $liste = array(
+      'lTD',
+      'lTP',
+      'lAnnale',
+      'lRapport',
+      'lPoster',
+      'lAutres'
+    );
   }
+
+  if(in_array($type, $liste))
+    return true;
+  else
+    return false;
 }
 
 function isSemestreCorrect($sem){
@@ -56,14 +73,13 @@ function isSemestreCorrect($sem){
 }
 
 function generateFileId(){
-  // ========= /!\ attention : à refaire ! =======
-  return "cdvnejbomd";
+  return date("YmdGis");
 }
 
 function verifyLink($p){
 
   if ( !isType($_POST['selectType'], false) ){
-    Messages::warn("Type de document incorrect !");
+    Messages::future_warn("Type de document incorrect !");
     return false;
   }
   
@@ -75,7 +91,7 @@ function verifyLink($p){
 function verifyDoc($p){
 
   if ( !isType($_POST['selectType'], true) ){
-    Messages::warn("Type de document incorrect !");
+    Messages::future_warn("Type de document incorrect !");
     return false;
   }
 
@@ -86,17 +102,17 @@ function verifyDoc($p){
 
 function verifyCommon($n){
   if (intval($_POST['note'])>20 || intval($_POST['note'])<0) { // note incorrecte
-    Messages::warn('La note donnée n\'est pas correcte (sur 20) !');
+    Messages::future_warn('La note donnée n\'est pas correcte (sur 20) !');
     return false;
   }
 
   if ( !isUV($_POST['u']) ){
-    Messages::warn('Cette UV n\'existe pas dans notre base ! Si elle existe réellement, envoyez-nous un mail à shwet@assos.utc.fr :)');
+    Messages::future_warn('Cette UV n\'existe pas dans notre base ! Si elle existe réellement, envoyez-nous un mail à shwet@assos.utc.fr :)');
     return false;
   }
 
   if ( !isSemestreCorrect(strtoupper($_POST['semestre'])) ){
-    Messages::warn("Semestre incorrect !");
+    Messages::future_warn("Semestre incorrect !");
     return false;
   }
 
@@ -125,9 +141,6 @@ function getExternalHost($lien){
 }
 
 
-var_dump($_POST);
-echo "<br><br><br>";
-
 if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
 
   if ( $_POST['submitted_doc']=="link" && verifyCommon($_POST) &&  verifyLink($_POST) ) { // si c'est un lien
@@ -139,59 +152,51 @@ if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
     $note = $_POST['note'];
     $semestre = strtoupper($_POST['semestre']);
     insert($lien, $uv, $type, $nom, $extHost, $note, $semestre);
+
+    Messages::future_info('Le lien a bien été ajouté, merci :)');
   } else if ( $_POST['submitted_doc']=="file" && verifyCommon($_POST) && verifyDoc($_POST) ) { // si c'est un fichier
     $id = generateFileId();
     $uv = strtoupper($_POST['u']);
     $type = $_POST['selectType'];
     $nom = $_POST['nomfichier'];
-    $extension = "";
     $note = $_POST['note'];
     $semestre = strtoupper($_POST['semestre']);
-    // insert($lien, $uv, $type, $nom, $extHost, $note, $semestre);
+
+    $filename = basename($_FILES['fichierUpload']['name']);
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    $path = "./docs/".$uv."/".$type."/";
+
+    // création du dossier si nécessaire
+    if (!is_dir( $path )){
+      if (mkdir( $path , 0777)){
+        Messages::debug("Dossier ".$path." créé :) ");
+      } else {
+        Messages::future_error("Erreur lors de la création d'un dossier :/ (c'est pas ta faute ^^ envoie juste un mail à shwet@assos.utc.fr)");
+      }
+    }
+
+    // déplacement du fichier
+    if( move_uploaded_file( $_FILES["fichierUpload"]["tmp_name"], $path.$id.".".$ext ) ){
+      Messages::debug("Fichier déplacé \o/ ");
+    } else {
+      Messages::future_error("Erreur au déplacement de " . $_FILES["fichierUpload"]["tmp_name"] ." à ". $path.$id.".".$ext."  (c'est pas ta faute ! dis-le nous à shwet@assos.utc.fr)");
+    }
+
+    insert($id, $uv, $type, $nom, $ext, $note, $semestre);
+
+    Messages::future_info('Le fichier a bien été uploadé, merci :)');
   } else {
-    // Paramètre incorrect, inclusion de la page d'upload
+    // Ya une erreur, retour à l'envoyeur
   }
 
+  // var_dump($_SESSION);
+  // header('Location: ?page=ajout');
+
 } else {
-  Messages::error("Il y a eu une erreur mais c'est pas ta faute :P envoie un mail à shwet@assos.utc.fr en disant 'SHWET:ERROR->REMEDIATION' ");
+  Messages::future_error("Il y a eu une erreur mais c'est pas ta faute :P envoie un mail à shwet@assos.utc.fr en disant 'SHWET:ERROR->REMEDIATION' ");
 }
 
 
-
-
-  // echo "Is dir : ".(is_dir ( "./docs/FQ01/TD/" )?'oui':'non');
-
-  // $uv = strtoupper($_POST['u']);
-  // $type = $_POST['selectType'];
-  // $nom = $_POST['nomfichier'];
-  // $note = $_POST['note'];
-  // $semestre = $_POST['semestre'];
-  // $commentaire = $_POST['commentaire'];
-  // $filename = basename($_FILES['fichierUpload']['name']);
-  // $ext = pathinfo($filename, PATHINFO_EXTENSION);
-  // $path = "./docs/".$uv."/".$type."/";
-  // $id = generateFileId();
-
-  // if (isUV($uv) && isType($type) && !is_dir( $path )){
-  //   if (mkdir( $path , 0777)){
-  //     echo "Dossier ".$path." créé :) ";
-  //       // $upload_fichier = upload($filename, $path.$id.".".$ext );
-  //     if( move_uploaded_file( $_FILES["fichierUpload"]["tmp_name"], $path.$id.".".$ext ) ){
-  //       echo "Fichier déplacé \o/ ";
-  //     } else {
-  //       echo "Erreur au déplacement de " . $_FILES["fichierUpload"]["tmp_name"] ." à ". $path.$id.".".$ext."   ";
-  //     }
-  //   } else
-  //     echo "Erreur lors de la création d'un dossier :/ ";
-
-  // } else {
-  //     echo "Le dossier existe déjà ou bien ça n'est pas une uv ! ";
-  //     if( move_uploaded_file($_FILES["fichierUpload"]["tmp_name"], $path.$id.".".$ext ) ){
-  //       echo "Fichier déplacé \o/ ";
-  //     } else {
-  //       echo "Erreur au déplacement de " . $_FILES["fichierUpload"]["tmp_name"]." à ". $path.$id.".".$ext."   ";
-  //     }
-  // }
 
   // var_dump($_FILES);
 ?>

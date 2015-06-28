@@ -1,12 +1,3 @@
-<?php
-if (isset($_GET['message']) && !empty($_GET['message'])){
-	switch ($_GET['message']) {
-		case 'connecte':
-			Messages::info('Vous êtes bien connecté !');
-			break;
-	}
-}
-?>
 <div class="row-fluid">
 	<div class="row-fluid">
 		<div class="span12">

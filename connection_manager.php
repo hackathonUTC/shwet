@@ -17,7 +17,12 @@ if ( isset($_GET['page']) && $_GET['page']=='logout'){
 			// echo $user;
 			$_SESSION['user'] = $user;
 			$_SESSION['ticket'] = $_GET['ticket'];
-			header('Location: index.php?message=connecte');
+			$_SESSION['messages'] = '';
+
+			Messages::future_info('Vous êtes bien connecté !');
+
+			$redirection = true;
+			header('Location: ?');
 		}
 		else {
 			// L'user n'est pas connecté et ne revient pas du CAS, donc on l'envoie là-bas
