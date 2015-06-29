@@ -43,7 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </a>
 
             <!-- Champs de recherche -->
-            <form id="search-uv-form" class="form-search navbar-search" method="GET" action="uv.php">
+            <form id="search-uv-form" class="form-search navbar-search" method="GET" action="?page=uv">
               <div class="input-append">
                 <input type="hidden" name="page" value="uv">
                 <input style="width: 150px;" name="u" autocomplete="on"
