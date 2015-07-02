@@ -78,7 +78,7 @@ function generateFileId(){
 
 function verifyLink($p){
 
-  if ( !isType($_POST['selectType'], false) ){
+  if ( !isType($p['selectType'], false) ){
     Messages::future_warn("Type de document incorrect !");
     return false;
   }
@@ -90,33 +90,49 @@ function verifyLink($p){
 
 function verifyDoc($p){
 
-  if ( !isType($_POST['selectType'], true) ){
+  if ( !isType($p['selectType'], true) ){
     Messages::future_warn("Type de document incorrect !");
     return false;
   }
 
-  // Vérifier : taille fichier, type
+  // Vérifications :
+  // taille fichier
+  $filesize = filesize($_FILES['fichierUpload']['tmp_name']);
+  if ( ($filesize > MAX_FILE_SIZE) || ($filesize < MIN_FILE_SIZE) ){
+    Messages::future_warn("Un fichier doit être ni trop lourd, ni trop léger ! Bah là c'était pas ça :P");
+    return false;
+  }
+
+  // type Mime correct
+
+  // nom avec des caractères potables (?)
+
+  // nom < 255 caractères
+  if (mb_strlen($filename,"UTF-8") > 225){
+    Messages::future_warn('Le nom de fichier est trop long ! Merci de le renommer !');
+  }
+
 
   return true;
 }
 
 function verifyCommon($n){
-  if (intval($_POST['note'])>20 || intval($_POST['note'])<0) { // note incorrecte
+  if (intval($n['note'])>20 || intval($n['note'])<0) { // note incorrecte
     Messages::future_warn('La note donnée n\'est pas correcte (sur 20) !');
     return false;
   }
 
-  if ( !isUV($_POST['u']) ){
+  if ( !isUV($n['u']) ){
     Messages::future_warn('Cette UV n\'existe pas dans notre base ! Si elle existe réellement, envoyez-nous un mail à shwet@assos.utc.fr :)');
     return false;
   }
 
-  if ( !isSemestreCorrect(strtoupper($_POST['semestre'])) ){
+  if ( !isSemestreCorrect(strtoupper($n['semestre'])) ){
     Messages::future_warn("Semestre incorrect !");
     return false;
   }
 
-  // vérifier que les non nuls sont bien non nuls !!!!!!!!!!!!!!!!
+  // vérifier que les non nuls sont bien non nuls ! XXX
 
   return true;
 }
@@ -145,15 +161,20 @@ if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
 
   if ( $_POST['submitted_doc']=="link" && verifyCommon($_POST) &&  verifyLink($_POST) ) { // si c'est un lien
     $lien = Bitly::shorten($_POST['lien']);
-    $uv = strtoupper($_POST['u']);
-    $type = $_POST['selectType'];
-    $nom = $_POST['nomfichier'];
-    $extHost = getExternalHost($_POST['lien']);
-    $note = $_POST['note'];
-    $semestre = strtoupper($_POST['semestre']);
-    insert($lien, $uv, $type, $nom, $extHost, $note, $semestre);
 
-    Messages::future_info('Le lien a bien été ajouté, merci :)');
+    if ( !empty($lien) ){
+      $uv = strtoupper($_POST['u']);
+      $type = $_POST['selectType'];
+      $nom = $_POST['nomfichier'];
+      $extHost = getExternalHost($_POST['lien']);
+      $note = $_POST['note'];
+      $semestre = strtoupper($_POST['semestre']);
+      insert($lien, $uv, $type, $nom, $extHost, $note, $semestre);
+
+      Messages::future_info('Le lien a bien été ajouté, merci :)');
+    } else {
+      Messages::future_error('Shit, on a eu un soucis en raccourcissant l\'URL, tu es sûr(e) qu\'elle est correcte ? Si oui, mail nous shwet@assos.utc.fr');
+    }
   } else if ( $_POST['submitted_doc']=="file" && verifyCommon($_POST) && verifyDoc($_POST) ) { // si c'est un fichier
     $id = generateFileId();
     $uv = strtoupper($_POST['u']);
@@ -190,7 +211,7 @@ if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
   }
 
   // var_dump($_SESSION);
-  // header('Location: ?page=ajout');
+  header('Location: ?page=ajout');
 
 } else {
   Messages::future_error("Il y a eu une erreur mais c'est pas ta faute :P envoie un mail à shwet@assos.utc.fr en disant 'SHWET:ERROR->REMEDIATION' ");
