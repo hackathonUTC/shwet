@@ -14,3 +14,17 @@ CREATE TABLE uvbranche (
 	uv VARCHAR(5) NOT NULL,
 	titreuv VARCHAR(255) NOT NULL
 );
+
+
+CREATE TABLE etu (
+	login CHAR(8) PRIMARY KEY,
+	lastAction DATETIME
+);
+
+CREATE TABLE avis (
+	doc VARCHAR(15) NOT NULL,
+	valeur TINYINT,
+	etu CHAR(8) NOT NULL,
+	FOREIGN KEY (doc) REFERENCES docs(id),
+	FOREIGN KEY (etu) REFERENCES etu(login)
+);
