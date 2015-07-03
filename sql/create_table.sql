@@ -5,8 +5,13 @@ CREATE TABLE docs (
 	nom VARCHAR(255) NOT NULL,
 	extension VARCHAR(4),
 	note TINYINT,
-	semestre CHAR(3)
+	semestre CHAR(3),
+	etu CHAR(8) NOT NULL,
+	FOREIGN KEY (etu) REFERENCES etu(login)
 );
+
+ALTER TABLE docs
+	ADD etu CHAR(8) REFERENCES etu(login);
 
 
 CREATE TABLE uvbranche (

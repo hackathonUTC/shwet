@@ -22,8 +22,8 @@ function isUV($uv){
 }
 
 function insert($id, $uv, $type, $nom, $extension, $note, $semestre){
-  $req = "INSERT INTO `docs` (`id`, `uv`, `type`, `nom`, `extension`, `note`, `semestre`) VALUES
-        ('$id','$uv' , '$type', '".mysql_escape_string($nom)."', '$extension', ".intval($note).", '".mysql_escape_string($semestre)."');";
+  $req = "INSERT INTO `docs` (`id`, `uv`, `type`, `nom`, `extension`, `note`, `semestre`, `etu`) VALUES
+        ('$id','$uv' , '$type', '".mysql_escape_string($nom)."', '$extension', ".intval($note).", '".mysql_escape_string($semestre)."', '".$_SESSION['user']."'');";
   db_query($req);
 }
 
@@ -185,27 +185,30 @@ if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
 
     $filename = basename($_FILES['fichierUpload']['name']);
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
-    $path = "./docs/".$uv."/".$type."/";
+    $path = "docs/".$uv."/".$type."/";
 
     // création du dossier si nécessaire
     if (!is_dir( $path )){
-      if (mkdir( $path , 0777)){
-        Messages::debug("Dossier ".$path." créé :) ");
+      if (!mkdir( $path , 0664)){
+        Messages::future_error("Erreur lors de la création du dossier '".$path."' :/ (c'est pas ta faute ^^ envoie juste un mail à shwet@assos.utc.fr)");
       } else {
-        Messages::future_error("Erreur lors de la création d'un dossier :/ (c'est pas ta faute ^^ envoie juste un mail à shwet@assos.utc.fr)");
+        Messages::debug("Dossier ".$path." créé :) ");
       }
     }
 
-    // déplacement du fichier
-    if( move_uploaded_file( $_FILES["fichierUpload"]["tmp_name"], $path.$id.".".$ext ) ){
-      Messages::debug("Fichier déplacé \o/ ");
-    } else {
-      Messages::future_error("Erreur au déplacement de " . $_FILES["fichierUpload"]["tmp_name"] ." à ". $path.$id.".".$ext."  (c'est pas ta faute ! dis-le nous à shwet@assos.utc.fr)");
+    if (is_dir( $path )){
+      // déplacement du fichier
+      if( move_uploaded_file( $_FILES["fichierUpload"]["tmp_name"], $path.$id.".".$ext ) ){
+        Messages::debug("Fichier déplacé \o/ ");
+
+        insert($id, $uv, $type, $nom, $ext, $note, $semestre);
+
+        Messages::future_info('Le fichier a bien été uploadé, merci :)');
+      } else {
+        Messages::future_error("Erreur au déplacement de " . $_FILES["fichierUpload"]["tmp_name"] ." à ". $path.$id.".".$ext."  (c'est pas ta faute ! dis-le nous à shwet@assos.utc.fr)");
+      }
     }
 
-    insert($id, $uv, $type, $nom, $ext, $note, $semestre);
-
-    Messages::future_info('Le fichier a bien été uploadé, merci :)');
   } else {
     // Ya une erreur, retour à l'envoyeur
   }
