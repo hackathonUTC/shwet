@@ -9,7 +9,21 @@ if (!empty($_POST['uv']))
 else
 	$uv = $_GET['uv'];
 
-$req = "SELECT * FROM docs WHERE uv='".$uv."' ORDER BY type;";
+$user = ''; // attention, le MD5 du pseudo !
+if (!empty($_POST['user']))
+	$user = $_POST['user'];
+else
+	$user = $_GET['user'];
+
+$req = "SELECT *
+			FROM docs d
+			LEFT OUTER JOIN (
+				SELECT SUM(a1.valeur) AS rank, doc FROM avis a1 GROUP BY doc
+				) AS ta1 ON ta1.doc=d.id
+			LEFT OUTER JOIN (
+				SELECT a2.valeur AS user_rank, doc FROM avis a2 WHERE MD5(etu)='".$user."' GROUP BY doc
+				) AS ta2 ON ta2.doc=d.id
+			WHERE uv='".$uv."' ORDER BY type;";
 
 $retour = db_query($req);
 
@@ -23,6 +37,8 @@ while (($row = mysql_fetch_array($retour)) != 0) {
 		'note' => $row['note'],
 		'semestre' => $row['semestre'],
 		'etu' => $row['etu'],
+		'rank' => $row['rank'],
+		'user_rank' => $row['user_rank']
 		);
 
 	array_push($result, $uv);

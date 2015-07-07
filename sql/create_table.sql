@@ -31,5 +31,6 @@ CREATE TABLE avis (
 	valeur TINYINT,
 	etu CHAR(8) NOT NULL,
 	FOREIGN KEY (doc) REFERENCES docs(id),
-	FOREIGN KEY (etu) REFERENCES etu(login)
+	FOREIGN KEY (etu) REFERENCES etu(login),
+	PRIMARY KEY (etu, doc)
 );
