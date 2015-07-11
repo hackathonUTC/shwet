@@ -18,7 +18,7 @@ function db_query($query){
 	$ret = mysql_query($query);
 
 	if (mysql_errno()>0) {
-		echo("Erreur".mysql_error()."' ");
+		echo("Erreur :".mysql_error());
 	} else {
 		return $ret;
 	}

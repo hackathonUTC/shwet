@@ -23,8 +23,8 @@ function isUV($uv){
 
 function insert($id, $uv, $type, $nom, $extension, $note, $semestre){
   $req = "INSERT INTO `docs` (`id`, `uv`, `type`, `nom`, `extension`, `note`, `semestre`, `etu`) VALUES
-        ('$id','$uv' , '$type', '".mysql_escape_string($nom)."', '$extension', ".intval($note).", '".mysql_escape_string($semestre)."', '".$_SESSION['user']."'');";
-  db_query($req);
+        ('$id','$uv' , '$type', '".mysql_escape_string($nom)."', '$extension', ".intval($note).", '".mysql_escape_string($semestre)."', '".$_SESSION['user']."');";
+  return db_query($req);
 }
 
 function isType($type, $isDoc){
@@ -169,9 +169,12 @@ if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
       $extHost = getExternalHost($_POST['lien']);
       $note = $_POST['note'];
       $semestre = strtoupper($_POST['semestre']);
-      insert($lien, $uv, $type, $nom, $extHost, $note, $semestre);
-
-      Messages::future_info('Le lien a bien été ajouté, merci :)');
+      
+      if (!insert($lien, $uv, $type, $nom, $extHost, $note, $semestre)){
+        Messages::future_info('Il y a eu une erreur dans la requête !');
+      } else {
+        Messages::future_info('Le lien a bien été ajouté, merci :)');
+      }
     } else {
       Messages::future_error('Shit, on a eu un soucis en raccourcissant l\'URL, tu es sûr(e) qu\'elle est correcte ? Si oui, mail nous shwet@assos.utc.fr');
     }
@@ -189,7 +192,7 @@ if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
 
     // création du dossier si nécessaire
     if (!is_dir( $path )){
-      if (!mkdir( $path , 0664)){
+      if (!mkdir( $path , 0744, true)){
         Messages::future_error("Erreur lors de la création du dossier '".$path."' :/ (c'est pas ta faute ^^ envoie juste un mail à shwet@assos.utc.fr)");
       } else {
         Messages::debug("Dossier ".$path." créé :) ");
