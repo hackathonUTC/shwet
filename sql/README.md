@@ -9,6 +9,10 @@ Voilà la structure des tables + les conventions prise :
 
 Liste des uvs posibles dans le système. On a plusieurs lignes pour la même UV car on précise les branches dans lesquelles ont peut la faire (c'est pas du 3NF, olalaaa).
 
+### etu
+* `login CHAR(8)`
+* `lastAction DATETIME` la date de la dernière action (en écriture) réalisée via l'API, pour éviter d'avoir un bot qui spamme les votes par exemple. On a le droit de faire une action chaque minute actuellement (voir /db_connect.php)
+
 ### docs
 * `id VARCHAR(15)`
 * `uv VARCHAR(5)` référence vers une uv (mais pas une fk)
@@ -17,6 +21,7 @@ Liste des uvs posibles dans le système. On a plusieurs lignes pour la même UV 
 * `extension VARCHAR(4)`
 * `note TINYINT` la note obtenue grâce à ce document, s'il y a lieu
 * `semestre CHAR(3)` sous la forme 'P15'
+* `etu CHAR(8)` qui est une fk vers un `etu` (comme c'est surprenant !)
 
 Deux cas de figure :
 #### Fichier
@@ -34,3 +39,9 @@ Deux cas de figure :
     * `gith` pour Github,
     * `none` pour un autre site
 * Le `type` est parmis est le même que pour fichier mais préfixé d'un `l`.
+
+### avis
+* `doc VARCHAR(15)` une fk vers un `docs`
+* `valeur TINYINT` la valeur du vote (-1 ou +1)
+* `etu CHAR(8)` une fk vers un `etu`
+Si un étudiant vote deux fois pour le même document, ça modifie son vote
