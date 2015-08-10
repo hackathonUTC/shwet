@@ -33,7 +33,7 @@ getURLParams = function(key, url) {
 
 pageType = getURLParams("page");
 
-
+$( document ).ready(function() {
 //Autocompletion Fonction for Search Form
 
 if(document.location.pathname.indexOf("index")==-1){ 
@@ -227,4 +227,4 @@ if(pageType=="uv"){
    		document.getElementById("docs-container").appendChild(h4);
 	}
 }
-
+})

@@ -18,7 +18,7 @@
 ###*Technologie :*
 * Backend PHP
 * Base MySQL
-* Tous le code javaScript est présent dans un container Google Tag Manager. Contacter nicolasszewe[at]gmail.com pour avoir les droits. 
+* Tous le code javaScript est présent dans le fichier shwet.js
 
 
 
