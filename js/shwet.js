@@ -35,7 +35,6 @@ pageType = getURLParams("page");
 
 $( document ).ready(function() {
 //Autocompletion Fonction for Search Form
-
 if(document.location.pathname.indexOf("index")==-1){ 
 //On fait l'autocompletion dans toute les pages sauf l'index
 	try{
@@ -65,6 +64,14 @@ if(document.location.pathname.indexOf("index")==-1){
 						$("#big-search-uv-name").val(ui.item.label);
             			$("#big-search-uv-form").submit(); }
 					});
+					
+				$('#big-search-uv-name2').autocomplete({
+    				source : listUVs,
+     				select: function(event, ui) { 
+						$("#big-search-uv-name2").val(ui.item.label);
+            			$("#big-search-uv-form2").submit(); }
+					});
+					
 			}
 		}catch(e){};
 }
@@ -228,10 +235,19 @@ if(pageType=="uv"){
 	}
 }
 
+$('#ajoutFichier').bind('click', function() {
+	document.getElementById('formulaireFichier').style.visibility='visible';
+	document.getElementById('formulaireExterne').style.visibility='hidden';
+});
 
-//JS pour les formulaires d'ajouts
-$('#envoieAjout').bind('click', function() {
-	uv = document.getElementById("big-search-uv-name").value;
+$('#ajoutExterne').bind('click', function() {
+	document.getElementById('formulaireExterne').style.visibility='visible';
+	document.getElementById('formulaireFichier').style.visibility='hidden';
+});
+
+
+var verificationUV = function(uvID){
+	uv = document.getElementById(uvID).value;
 
 	var listUV = $.ajax({
   		type: 'POST',
@@ -258,6 +274,15 @@ $('#envoieAjout').bind('click', function() {
 	else  {
 		alert("UV NON VALIDE");
 	}
+}
+
+//JS pour les formulaires d'ajouts
+$('#envoieAjout').bind('click', function() {
+	verificationUV("big-search-uv-name");
+});
+
+$('#envoieAjout2').bind('click', function() {
+	verificationUV("big-search-uv-name2");
 });
 
 })
