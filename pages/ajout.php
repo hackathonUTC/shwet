@@ -103,7 +103,7 @@
             <input name="commentaire"  class="form-control" id ="commentaire" type ="text" placeholder="Commentaire"><br>
           </div>
           <div class="form-group">
-            <input TYPE="submit"  class="form-control" NAME="nom" value=" Envoyer " onclick="javascript:dataLayer.push({'event' : 'formulaireEnvoi'})">
+            <input id="envoieAjout" TYPE="submit"  class="form-control" NAME="nom" value=" Envoyer ">
           </div>
         </form>
       </div>

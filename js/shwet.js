@@ -227,4 +227,37 @@ if(pageType=="uv"){
    		document.getElementById("docs-container").appendChild(h4);
 	}
 }
+
+
+//JS pour les formulaires d'ajouts
+$('#envoieAjout').bind('click', function() {
+	uv = document.getElementById("big-search-uv-name").value;
+
+	var listUV = $.ajax({
+  		type: 'POST',
+  		url: "http://assos.utc.fr/shwet/getuvs.php",
+  		data: {branche : ""},
+  		async:false
+	});
+
+	listUV = JSON.parse(listUV.responseText);
+	listUVs = [];
+	for(var i =0; i < listUV.length ; i ++){
+   		listUVs[i] = listUV[i].uvname;
+	}
+
+	if(listUVs.indexOf(uv)!=-1){
+	var formulaire = {
+    	 "uv" : uv,
+     	"type" : document.getElementById("selectType").value,
+     	"nom" : document.getElementById("nomfichier").value,
+     	"note" : document.getElementById("note").value,
+     	"semestre" : document.getElementById("semestre").value,
+     	"commentaire" : document.getElementById("commentaire").value
+	}}
+	else  {
+		alert("UV NON VALIDE");
+	}
+});
+
 })
