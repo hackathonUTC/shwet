@@ -134,6 +134,7 @@ li.ui-menu-item:focus{
 .flexItem{
 	flex: 1;
 	text-align:center;
+	cursor:pointer;
 }
 
 .choiceItem.disabled{
@@ -186,4 +187,16 @@ footer{
     position: absolute;
     left: 0;
     bottom: 0; 
+}
+
+.navbar-inner {
+	border: 1px solid #656565;
+}
+
+li.dropdown:hover{
+	color: white;
+}
+
+.search-uv-button:hover{
+	background-color: rgb(0.5, 0.5, 0.5);
 }

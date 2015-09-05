@@ -112,13 +112,15 @@ if(pageType=="branche"){
    			table.className="table table-condensed table-bordered table-striped";
    			table.id = "UV-" + letter ; 
    			div.appendChild(table);
+   			tr = document.createElement('tr');
    			thead = document.createElement('thead');
    			th1 =  document.createElement('th');
    			th1.appendChild(document.createTextNode(letter));
    			th2 =  document.createElement('th');
    			th2.appendChild(document.createTextNode("Nombre de documents"));
-   			thead.appendChild(th1);
-   			thead.appendChild(th2);
+   			tr.appendChild(th1);
+   			tr.appendChild(th2);
+   			thead.appendChild(tr);
    			table.appendChild(thead);
    			document.getElementById("list-container").appendChild(div);
   		}
@@ -235,16 +237,42 @@ if(pageType=="uv"){
 	}
 }
 
-$('#ajoutFichier').bind('click', function() {
-	document.getElementById('formulaireFichier').style.visibility='visible';
-	document.getElementById('formulaireExterne').style.visibility='hidden';
-});
+if(pageType=="ajout"){
+	$('#ajoutFichier').bind('click', function() {
+		// document.getElementById('formulaireFichier').style.visibility='visible';
+		// document.getElementById('formulaireExterne').style.visibility='hidden';
+		if (!$('#ajoutFichier').hasClass("active")){
+			$("#vide").slideUp();
+			$("#formulaireFichierIn").slideDown();
+			$("#formulaireExterneIn").slideUp();
+			$("#ajoutFichier").addClass("active");
+			$("#ajoutExterne").removeClass("active");
+		} else {
+			$("#ajoutFichier").removeClass("active");
+			$("#formulaireFichierIn").slideUp();
+			$("#vide").slideDown();
+		}
+	});
 
-$('#ajoutExterne').bind('click', function() {
-	document.getElementById('formulaireExterne').style.visibility='visible';
-	document.getElementById('formulaireFichier').style.visibility='hidden';
-});
+	$('#ajoutExterne').bind('click', function() {
+		// document.getElementById('formulaireExterne').style.visibility='visible';
+		// document.getElementById('formulaireFichier').style.visibility='hidden';
+		if (!$('#ajoutExterne').hasClass("active")){
+			$("#vide").slideUp();
+			$("#formulaireFichierIn").slideUp();
+			$("#formulaireExterneIn").slideDown();
+			$("#ajoutFichier").removeClass("active");
+			$("#ajoutExterne").addClass("active");
+		} else {
+			$("#vide").slideDown();
+			$("#ajoutExterne").removeClass("active");
+			$("#formulaireExterneIn").slideUp();
+		}
+	});
 
+
+	$("#vide").height( 0.25*$( window ).height());
+};
 
 var verificationUV = function(uvID){
 	uv = document.getElementById(uvID).value;
