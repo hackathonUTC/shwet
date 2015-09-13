@@ -1,3 +1,5 @@
+<div class="choiceConteneur" id="vide"></div>
+
 <div class="choiceConteneur">
   <div class="flexItem">
     <div id="ajoutFichier" class="choiceItem">
@@ -5,9 +7,8 @@
     </div>
   </div>
 
-
   <div class="flexItem">
-    <div id="ajoutExterne" class="choiceItem active">
+    <div id="ajoutExterne" class="choiceItem">
       <h3>Ajout d'un lien vers un document externe</h3>
     </div>
   </div>
@@ -22,11 +23,11 @@
 
 <div class="choiceConteneur">
 
-    <div id="formulaireFichier" class="flexItem" style="visibility: hidden">
+    <div id="formulaireFichier" class="flexItem">
         <!-- Formulaire -->
         <!-- <form id="big-search-uv-form" class="form-search navbar-search" enctype="multipart/form-data" method="POST" action="upload.php"> -->
       
-      <div class="formConteneur">
+      <div class="formConteneur" id="formulaireFichierIn" style="display: none">
         <form enctype="multipart/form-data" method="POST" action="?page=upload" id="formFichier">
           <input type="hidden" name="submitted_doc" value="file" />
           <input type="hidden" name="form" value="true" />
@@ -70,11 +71,11 @@
       </div>
     </div>
     
-    <div id="formulaireExterne" class="flexItem" style="visibility: hidden">
+    <div id="formulaireExterne" class="flexItem">
         <!-- Formulaire -->
         <!-- <form id="big-search-uv-form" class="form-search navbar-search" enctype="multipart/form-data" method="POST" action="upload.php"> -->
       
-      <div class="formConteneur">
+      <div class="formConteneur" id="formulaireExterneIn" style="display: none">
         <form enctype="multipart/form-data" method="POST" action="?page=upload" id="formFichier">
           <input type="hidden" name="submitted_doc" value="link" />
           <input type="hidden" name="form" value="true" />
