@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" language="javascript" src="js/bootstrap.min.js"></script>
-    <script src="shwet.js"></script>
+    <script src="js/shwet.js"></script>
 
 
   </head>

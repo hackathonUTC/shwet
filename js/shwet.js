@@ -33,9 +33,8 @@ getURLParams = function(key, url) {
 
 pageType = getURLParams("page");
 
-
+$( document ).ready(function() {
 //Autocompletion Fonction for Search Form
-
 if(document.location.pathname.indexOf("index")==-1){ 
 //On fait l'autocompletion dans toute les pages sauf l'index
 	try{
@@ -65,6 +64,14 @@ if(document.location.pathname.indexOf("index")==-1){
 						$("#big-search-uv-name").val(ui.item.label);
             			$("#big-search-uv-form").submit(); }
 					});
+					
+				$('#big-search-uv-name2').autocomplete({
+    				source : listUVs,
+     				select: function(event, ui) { 
+						$("#big-search-uv-name2").val(ui.item.label);
+            			$("#big-search-uv-form2").submit(); }
+					});
+					
 			}
 		}catch(e){};
 }
@@ -228,3 +235,54 @@ if(pageType=="uv"){
 	}
 }
 
+$('#ajoutFichier').bind('click', function() {
+	document.getElementById('formulaireFichier').style.visibility='visible';
+	document.getElementById('formulaireExterne').style.visibility='hidden';
+});
+
+$('#ajoutExterne').bind('click', function() {
+	document.getElementById('formulaireExterne').style.visibility='visible';
+	document.getElementById('formulaireFichier').style.visibility='hidden';
+});
+
+
+var verificationUV = function(uvID){
+	uv = document.getElementById(uvID).value;
+
+	var listUV = $.ajax({
+  		type: 'POST',
+  		url: "http://assos.utc.fr/shwet/getuvs.php",
+  		data: {branche : ""},
+  		async:false
+	});
+
+	listUV = JSON.parse(listUV.responseText);
+	listUVs = [];
+	for(var i =0; i < listUV.length ; i ++){
+   		listUVs[i] = listUV[i].uvname;
+	}
+
+	if(listUVs.indexOf(uv)!=-1){
+	var formulaire = {
+    	 "uv" : uv,
+     	"type" : document.getElementById("selectType").value,
+     	"nom" : document.getElementById("nomfichier").value,
+     	"note" : document.getElementById("note").value,
+     	"semestre" : document.getElementById("semestre").value,
+     	"commentaire" : document.getElementById("commentaire").value
+	}}
+	else  {
+		alert("UV NON VALIDE");
+	}
+}
+
+//JS pour les formulaires d'ajouts
+$('#envoieAjout').bind('click', function() {
+	verificationUV("big-search-uv-name");
+});
+
+$('#envoieAjout2').bind('click', function() {
+	verificationUV("big-search-uv-name2");
+});
+
+})
