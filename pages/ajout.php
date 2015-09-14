@@ -34,7 +34,7 @@
           <div class="form-group">
             <!-- <div class="input-append"> -->
               <!-- <input style="width: 1000px;" name="u" autocomplete="on" id="big-search-uv-name" class="search-query span2"  type="text" placeholder="Rechercher une UV"> -->
-              <input name="u" autocomplete="on" id="big-search-uv-name" class="form-control"  type="text" placeholder="Rechercher une UV">
+              <input name="u" autocomplete="on" id="big-search-uv-name" class="form-control"  type="text" placeholder="Rechercher une UV" <?php if(isset($_GET["u"])) { $truc = $_GET["u"]; echo "value=\"$truc\""; } ?>>
             <!-- </div> -->
           </div>
             <div class="form-group">
@@ -82,7 +82,7 @@
           <div class="form-group">
             <!-- <div class="input-append"> -->
               <!-- <input style="width: 1000px;" name="u" autocomplete="on" id="big-search-uv-name" class="search-query span2"  type="text" placeholder="Rechercher une UV"> -->
-              <input name="u" autocomplete="on" id="big-search-uv-name2" class="form-control"  type="text" placeholder="Rechercher une UV">
+              <input name="u" autocomplete="on" id="big-search-uv-name2" class="form-control"  type="text" placeholder="Rechercher une UV" <?php if(isset($_GET["u"])) { $truc = $_GET["u"]; echo "value=\"$truc\""; } ?>>
             <!-- </div> -->
           </div>
             <div class="form-group">

@@ -127,7 +127,7 @@ li.ui-menu-item:focus{
 
 .choiceItem{
 	padding: 20px;
-	background-color: #9D80C2;
+	background-color: #AA9CCC;
 	border-radius: 5px;
 	margin: 10px;
 	margin-left:40px;
@@ -149,7 +149,7 @@ li.ui-menu-item:focus{
 }
 
 .choiceItem.active{
-	background-color: #533A83;
+	background-color: #4E3F71;
 }
 
 .formConteneur{
@@ -198,8 +198,35 @@ footer{
 
 .navbar-inner {
 	border: 1px solid #656565;
+	background: #4E3F71;
 }
 
 .search-uv-button:hover{
 	background-color: rgb(0.5, 0.5, 0.5);
+}
+
+.info {
+  cursor: help;
+  border-radius: 50%;
+  border: 1px solid #4B3072;
+  float: right;
+  padding: 1px 8px;
+}
+
+#add-button {
+  border-radius: 4px;
+  background-color: #4E3F71;
+  transition-property: background-color;
+  transition-duration: 500ms;
+  float: right;
+  padding: 15px;
+  color: white;
+}
+
+#add-button:hover {
+  background-color: gray;
+}
+
+.navbar-fixed-top {
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
 }
