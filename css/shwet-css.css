@@ -51,7 +51,14 @@ li.dropdown :hover {
 }
 
 li.dropdown {
+	border-radius: 3px;
 	margin-top: 15px;
+	transition-property: background-color;
+	transition-duration: 500ms;
+}
+
+li.dropdown:hover{
+	background-color: rgba(255,255,255,0.8);
 }
 
 .main-container{
@@ -191,10 +198,6 @@ footer{
 
 .navbar-inner {
 	border: 1px solid #656565;
-}
-
-li.dropdown:hover{
-	color: white;
 }
 
 .search-uv-button:hover{

@@ -17,3 +17,11 @@ body {
   height: 26px;
   cursor: pointer;
 }
+
+.info {
+  cursor: help;
+  border-radius: 50%;
+  border: 1px solid lightgray;
+  float: right;
+  padding: 1px 8px;
+}

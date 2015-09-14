@@ -103,45 +103,60 @@ if(pageType=="branche"){
 		uvs = JSON.parse(uvs.responseText);
 	} catch(e){}
 
-	for( var i =0 ; i < uvs.length; i++){
-		if(uvs[i].uvname[0]!=letter){
-   			letter = uvs[i].uvname[0];
+	var currentColumn = 0;
+	var i = 0;
+	var div = null;
+	do { // pour chaque lettre
+		// si nécessaire on change de colonne
+		if (i >= parseInt(currentColumn * uvs.length/4)) {
+			// si on a trop d'UV dans cette colonne, on ajoute une colonne
    			div = document.createElement('div');
    			div.className = "span3";
-   			table = document.createElement('table');
-   			table.className="table table-condensed table-bordered table-striped";
-   			table.id = "UV-" + letter ; 
-   			div.appendChild(table);
-   			tr = document.createElement('tr');
-   			thead = document.createElement('thead');
-   			th1 =  document.createElement('th');
-   			th1.appendChild(document.createTextNode(letter));
-   			th2 =  document.createElement('th');
-   			th2.appendChild(document.createTextNode("Nombre de documents"));
-   			tr.appendChild(th1);
-   			tr.appendChild(th2);
-   			thead.appendChild(tr);
-   			table.appendChild(thead);
-   			document.getElementById("list-container").appendChild(div);
-  		}
+   			currentColumn += 1;
+		};
+
+   		letter = uvs[i].uvname[0];
+		table = document.createElement('table');
+		table.className="table table-condensed table-bordered table-striped";
+		table.id = "UV-" + letter ; 
+   		div.appendChild(table);
 		tr = document.createElement('tr');
-		tr.id=uvs[i].uvname;
-		td = document.createElement('td');
-		a = document.createElement("a");
-		a.href = "/shwet?page=uv&u=" + uvs[i].uvname;
-		a.appendChild(document.createTextNode(uvs[i].uvname));
-		td.appendChild(a);
-		tr.appendChild(td);
-		td2= document.createElement('td');
-  		if(uvs[i].nbdocs==null){
-			td2.appendChild(document.createTextNode("0"));
-  		}
-  		else {
-    		td2.appendChild(document.createTextNode(uvs[i].nbdocs));
-  		}
-		tr.appendChild(td2);
-		document.getElementById("UV-"+letter).appendChild(tr);
-	}
+		thead = document.createElement('thead');
+		th1 =  document.createElement('th');
+		th1.appendChild(document.createTextNode(letter));
+		th2 =  document.createElement('th');
+		th2.appendChild(document.createTextNode("Nombre de documents"));
+		tr.appendChild(th1);
+		tr.appendChild(th2);
+		thead.appendChild(tr);
+		table.appendChild(thead);
+   		document.getElementById("list-container").appendChild(div);
+
+		// on ajoute les UVs commençant par cette lettre
+		while (uvs[i].uvname[0] == letter) {
+   			tr = document.createElement('tr');
+			tr.id=uvs[i].uvname;
+			td = document.createElement('td');
+			a = document.createElement("a");
+			a.href = "/shwet?page=uv&u=" + uvs[i].uvname;
+			a.appendChild(document.createTextNode(uvs[i].uvname));
+			td.appendChild(a);
+			tr.appendChild(td);
+			td2= document.createElement('td');
+	  		if(uvs[i].nbdocs==null){
+				td2.appendChild(document.createTextNode("0"));
+	  		}
+	  		else {
+	    		td2.appendChild(document.createTextNode(uvs[i].nbdocs));
+	  		}
+			tr.appendChild(td2);
+			document.getElementById("UV-"+letter).appendChild(tr);
+   			i += 1;
+		};
+
+
+	} while (i < uvs.length);
+
 }
 
 //Fonction pour les pages Uvs 
@@ -206,16 +221,28 @@ if(pageType=="uv"){
    			div = document.createElement('div');
    			div.className = "span3";
    			h4 = document.createElement("h4");
-   			h4.appendChild(document.createTextNode(type));
-   			div.appendChild(h4);
+   			if (type[0] == 'l'){
+				h4.appendChild(document.createTextNode(type.substring(1,type.length) + " externe"));
+   				span = document.createElement("span");
+				span.appendChild(document.createTextNode("i"));
+				span.className = "info";
+				span.title = "Ces documents pointent vers des liens externes (genre Drive). Ils s'ouvrent dans l'onglet actuel";
+				h4.appendChild(span);
+   				div.appendChild(h4);
+   			} else {
+				h4.appendChild(document.createTextNode(type));
+   				div.appendChild(h4);
+   			}
    			table = document.createElement('table');
    			table.className="table table-condensed table-bordered table-striped";
-   			table.id = "doc-" + type ; 
+   			table.id = "doc-" + type;
    			div.appendChild(table);
+   			tr = document.createElement('tr');
    			thead = document.createElement('thead');
    			th1 =  document.createElement('th');
    			th1.appendChild(document.createTextNode("Documents"));
-   			thead.appendChild(th1);
+			tr.appendChild(th1);
+			thead.appendChild(tr);
    			table.appendChild(thead);
    			document.getElementById("docs-container").appendChild(div);
   		}
