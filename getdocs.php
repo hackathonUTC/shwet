@@ -23,7 +23,7 @@ $req = "SELECT *
 			LEFT OUTER JOIN (
 				SELECT a2.valeur AS user_rank, doc FROM avis a2 WHERE MD5(etu)='".$user."' GROUP BY doc
 				) AS ta2 ON ta2.doc=d.id
-			WHERE uv='".$uv."' ORDER BY type;";
+			WHERE uv='".$uv."' ORDER BY type, rank;";
 
 $retour = db_query($req);
 
