@@ -6,14 +6,14 @@
 * Consultation des documents par UV/Branche
 
 ###*Fonctionnalités souhaitées :* 
+* Ajout des icônes pour les liens externes
 * Ajout de fichier (+ liens vers annales collaboratives) (compléter upload.php)
 * Système de "+" "-" sur les documents pour les ranger par popularité
-* Système de pad pour le travail en commun capitalisé
 * Ajouter le reste dans anciens documents au site
+* Système de pad pour le travail en commun capitalisé
 
 ###*Bugs :*
-* Corriger problèmes affichage
-* Revoir le style, surtout les :hovers et les :focus
+* Corriger les bugs de :hovers
 
 ###*Technologie :*
 * Backend PHP

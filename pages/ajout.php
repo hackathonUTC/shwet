@@ -88,12 +88,12 @@
             <div class="form-group">
               
               <select name="selectType" id="selectType" class="form-control" required>  					
-                <option value="TD">TD</option>
-                <option value="TP">TP</option>
-                <option value="Annale">Annale</option>
-                <option value="Rapport">Rapport ou projet</option>
-                <option value="Poster">Poster</option>
-                <option value="Autres">Autres</option>
+                <option value="lTD">TD</option>
+                <option value="lTP">TP</option>
+                <option value="lAnnale">Annale</option>
+                <option value="lRapport">Rapport ou projet</option>
+                <option value="lPoster">Poster</option>
+                <option value="lAutres">Autres</option>
         			</select>
             </div>
           <div class="form-group">

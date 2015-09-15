@@ -79,7 +79,7 @@ function generateFileId(){
 function verifyLink($p){
 
   if ( !isType($p['selectType'], false) ){
-    Messages::future_warn("Type de document incorrect !");
+    Messages::future_warn("Type de document '"+$p['selectType']+"' incorrect !");
     return false;
   }
   
