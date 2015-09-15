@@ -1,5 +1,6 @@
 <?php
 include('db_connect.php');
+session_start();
 
 $result = array();
 
@@ -9,11 +10,12 @@ if (!empty($_POST['doc']))
 else
 	$doc = $_GET['doc'];
 
-$user = ''; // attention, le MD5 du pseudo !
-if (!empty($_POST['user']))
-	$user = $_POST['user'];
-else
-	$user = $_GET['user'];
+// $user = '';
+// if (!empty($_POST['user']))
+// 	$user = $_POST['user'];
+// else
+// 	$user = $_GET['user'];
+$user = $_SESSION['user'];
 
 $val = 0;
 if (!empty($_POST['val']))
@@ -22,11 +24,11 @@ else
 	$val = intval($_GET['val']);
 
 if ((abs($val) !== 1) || empty($user) || empty($doc)){
-	echo 'erreur';
+	echo '{ "result": "error", "value": "Valeur du vote ('.$val.'), utilisateur ('.$user.') ou référence document ('.$doc.') incorrect"}';
 } else {
 	// La valeur du vote est correcte
 
-	$req = "SELECT login FROM etu WHERE MD5(login)='".$user."';";
+	$req = "SELECT login FROM etu WHERE login='".$user."';";
 	$retour = db_query($req);
 
 	if (($row = mysql_fetch_array($retour)) == 0){
@@ -42,16 +44,21 @@ if ((abs($val) !== 1) || empty($user) || empty($doc)){
 
 			$retour = db_query($req);
 
-			$req = "SELECT valeur FROM avis WHERE etu='".$user."';";
+			$req = "SELECT valeur FROM avis WHERE etu='".$user."' AND doc='".$doc."';";
 			$retour = db_query($req);
 
 			if (($row = mysql_fetch_array($retour)) != 0){
-				echo $row['valeur'];
+
+				$req = "SELECT SUM(valeur) sum FROM avis WHERE etu='".$user."' AND doc='".$doc."';";
+				$retour = db_query($req);
+				$row2 = mysql_fetch_array($retour);
+
+				echo '{ "result": "success", "rank": '.$row2['sum'].', "user_rank": '.$row['valeur'].'}';
 			} else {
-				echo "erreur : une requete interne a echoue";
+				echo '{ "result": "error", "value": "Une requete interne a echoue"}';
 			}
 		} else {
-			echo "faut attendre";
+			echo '{ "result": "error", "value": "Temps trop court entre deux votes, il faut attendre !"}';
 		}
 
 	}

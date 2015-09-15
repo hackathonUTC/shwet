@@ -226,34 +226,76 @@ if(pageType=="uv"){
    				span = document.createElement("span");
 				span.appendChild(document.createTextNode("i"));
 				span.className = "info";
-				span.title = "Ces documents pointent vers des liens externes (genre Drive). Ils s'ouvrent dans l'onglet actuel";
+				span.title = "Ces documents pointent vers des liens externes (genre Drive). Ils s'ouvrent dans un nouvel onglet";
 				h4.appendChild(span);
    				div.appendChild(h4);
    			} else {
 				h4.appendChild(document.createTextNode(type));
    				div.appendChild(h4);
    			}
+			
    			table = document.createElement('table');
-   			table.className="table table-condensed table-bordered table-striped";
+   			table.className="table table-condensed table-bordered table-striped docTable";
    			table.id = "doc-" + type;
    			div.appendChild(table);
    			tr = document.createElement('tr');
    			thead = document.createElement('thead');
    			th1 =  document.createElement('th');
-   			th1.appendChild(document.createTextNode("Documents"));
+   			th1.appendChild(document.createTextNode("Titre"));
+			th2 =  document.createElement('th');
+			th2.appendChild(document.createTextNode("Semestre"));
+			th3 =  document.createElement('th');
+			th3.appendChild( document.createTextNode("Note") );
+			th4 = document.createElement('th');
+			th4.appendChild( document.createTextNode("") );
 			tr.appendChild(th1);
+			tr.appendChild(th2);
+			tr.appendChild(th3);
+			tr.appendChild(th4);
 			thead.appendChild(tr);
    			table.appendChild(thead);
    			document.getElementById("docs-container").appendChild(div);
   		}
 		tr = document.createElement('tr');
 		tr.id=docs[i].id;
+		tr.className = "docRow";
 		td = document.createElement('td');
+		td.className = "docName";
 		a = document.createElement("a");
-		a.href = "docs/" + docs[i].uv + "/" + docs[i].type + "/" + docs[i].id + "." + docs[i].extension;
+		if ( type[0] = 'l' ){
+			// c'est un lien externe
+			a.href = "http://bit.ly/"+docs[i].id;
+			a.setAttribute("target", "_blank");
+		} else {
+			// c'est un document héberg
+			a.href = "docs/" + docs[i].uv + "/" + docs[i].type + "/" + docs[i].id + "." + docs[i].extension;
+		}
+		console.log(docs[i]);
 		a.appendChild(document.createTextNode(docs[i].nom));
 		td.appendChild(a);
 		tr.appendChild(td);
+		var td2 = document.createElement('td');
+		td2.appendChild( document.createTextNode(docs[i].semestre) );
+		tr.appendChild(td2);
+		td3 = document.createElement('td');
+		if (docs[i].note !== "0"){
+			td3.appendChild( document.createTextNode(docs[i].note) );
+		}
+		tr.appendChild( td3 );
+		td4 = document.createElement('td');
+		updowndiv = document.createElement("div");
+		updowndiv.className = "upDown";
+		updowndiv.innerHTML = "<a href='#'>\
+								<img class='upDown"+(docs[i].user_rank==1?" disabled")+"' id='up-"+docs[i].id+"' src='img/up.png'>\
+								</a>\
+								<span id='rank-"+docs[i].id+"'>"
+								+(docs[i].rank?docs[i].rank:0)
+								+"</span>\
+								<a href='#'>\
+								<img class='upDown"+(docs[i].user_rank==-1?" disabled")+"' id='down-"+docs[i].id+"' src='img/down.png'>\
+								</a>";
+		td4.appendChild( updowndiv );
+		tr.appendChild( td4 );
 		document.getElementById("doc-"+type).appendChild(tr);
 	}
 
@@ -262,6 +304,59 @@ if(pageType=="uv"){
    		h4.appendChild(document.createTextNode("Aucun document disponible pour cette UV"));
    		document.getElementById("docs-container").appendChild(h4);
 	}
+
+	$(".upDown").on("click", function(){
+		var btn = this.id.split("-");
+		var bType = btn[0];
+		var val = 0;
+
+		if (!bType) return; // si c'est le div parent du bouton, qui a la même classe
+		if ($(this).hasClass("disabled")){
+			console.log("disabled !");
+			return;
+		}
+
+		if (bType == "up") {
+			// alert("Bouton up du doc "+btn[1]);
+			val = +1;
+		} else {
+			// alert("Bouton down du doc "+btn[1]);
+			val = -1;
+		}
+
+		var doc = btn[1];
+
+		ret = $.ajax({
+	  		type: 'POST',
+	  		url:  document.location.protocol + "//assos.utc.fr/shwet/docvote.php",
+	  		data: {doc: doc, val: val },
+	  		async:false
+		});
+
+		try{
+			ret = JSON.parse(ret.responseText);
+		} catch(e){
+			alert('Erreur de parse (merci d\'envoyer un mail à michelme@etu.utc.fr :) )');
+		}
+
+		console.log(ret);
+
+		if (ret.result == "success") {
+			// alert("Succès ! #rank-"+doc);
+			// console.log(ret);
+			$("#rank-"+doc).text(ret.rank);
+			if (ret.user_rank == -1){
+				$("#up-"+doc).removeClass("disabled");
+				$("#down-"+doc).addClass("disabled");
+			}
+			if (ret.user_rank == +1){
+				$("#down-"+doc).removeClass("disabled");
+				$("#up-"+doc).addClass("disabled");
+			}
+		} else {
+			alert("Erreur ! " + ret.value);
+		}
+	});
 }
 
 if(pageType=="ajout"){

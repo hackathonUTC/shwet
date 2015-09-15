@@ -1,5 +1,6 @@
 <?php
 include('db_connect.php');
+session_start();
 
 $result = array();
 
@@ -9,11 +10,12 @@ if (!empty($_POST['uv']))
 else
 	$uv = $_GET['uv'];
 
-$user = ''; // attention, le MD5 du pseudo !
-if (!empty($_POST['user']))
-	$user = $_POST['user'];
-else
-	$user = $_GET['user'];
+// $user = ''; // attention, le MD5 du pseudo !
+// if (!empty($_POST['user']))
+// 	$user = $_POST['user'];
+// else
+// 	$user = $_GET['user'];
+$user = $_SESSION['user'];
 
 $req = "SELECT *
 			FROM docs d
@@ -21,9 +23,9 @@ $req = "SELECT *
 				SELECT SUM(a1.valeur) AS rank, doc FROM avis a1 GROUP BY doc
 				) AS ta1 ON ta1.doc=d.id
 			LEFT OUTER JOIN (
-				SELECT a2.valeur AS user_rank, doc FROM avis a2 WHERE MD5(etu)='".$user."' GROUP BY doc
+				SELECT a2.valeur AS user_rank, doc FROM avis a2 WHERE etu='".$user."' GROUP BY doc
 				) AS ta2 ON ta2.doc=d.id
-			WHERE uv='".$uv."' ORDER BY type;";
+			WHERE uv='".$uv."' ORDER BY type, rank;";
 
 $retour = db_query($req);
 
