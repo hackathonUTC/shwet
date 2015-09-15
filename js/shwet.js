@@ -286,13 +286,13 @@ if(pageType=="uv"){
 		updowndiv = document.createElement("div");
 		updowndiv.className = "upDown";
 		updowndiv.innerHTML = "<a href='#'>\
-								<img class='upDown"+(docs[i].user_rank==1?" disabled")+"' id='up-"+docs[i].id+"' src='img/up.png'>\
+								<img class='upDown"+(docs[i].user_rank==1?" disabled":"")+"' id='up-"+docs[i].id+"' src='img/up.png'>\
 								</a>\
 								<span id='rank-"+docs[i].id+"'>"
 								+(docs[i].rank?docs[i].rank:0)
 								+"</span>\
 								<a href='#'>\
-								<img class='upDown"+(docs[i].user_rank==-1?" disabled")+"' id='down-"+docs[i].id+"' src='img/down.png'>\
+								<img class='upDown"+(docs[i].user_rank==-1?" disabled":"")+"' id='down-"+docs[i].id+"' src='img/down.png'>\
 								</a>";
 		td4.appendChild( updowndiv );
 		tr.appendChild( td4 );
