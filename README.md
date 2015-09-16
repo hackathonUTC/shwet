@@ -7,8 +7,7 @@
 
 ###*Fonctionnalités souhaitées :* 
 * Ajout des icônes pour les liens externes
-* Ajout de fichier (+ liens vers annales collaboratives) (compléter upload.php)
-* Système de "+" "-" sur les documents pour les ranger par popularité
+* Ajout de fichier (+ liens vers annales collaboratives), support des commentaires (compléter upload.php)
 * Ajouter le reste dans anciens documents au site
 * Système de pad pour le travail en commun capitalisé
 
