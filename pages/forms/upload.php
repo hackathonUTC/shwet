@@ -192,7 +192,7 @@ if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
 
     // création du dossier si nécessaire
     if (!is_dir( $path )){
-      if (!mkdir( $path , 0744, true)){
+      if (!mkdir( $path , 0755, true)){
         Messages::future_error("Erreur lors de la création du dossier '".$path."' :/ (c'est pas ta faute ^^ envoie juste un mail à shwet@assos.utc.fr)");
       } else {
         Messages::debug("Dossier ".$path." créé :) ");

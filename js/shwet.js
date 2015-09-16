@@ -262,7 +262,7 @@ if(pageType=="uv"){
 		td = document.createElement('td');
 		td.className = "docName";
 		a = document.createElement("a");
-		if ( type[0] = 'l' ){
+		if ( docs[i].type[0] == "l" ){
 			// c'est un lien externe
 			a.href = "http://bit.ly/"+docs[i].id;
 			a.setAttribute("target", "_blank");
