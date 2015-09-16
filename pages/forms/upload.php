@@ -99,7 +99,7 @@ function verifyDoc($p){
   // taille fichier
   $filesize = filesize($_FILES['fichierUpload']['tmp_name']);
   if ( ($filesize > MAX_FILE_SIZE) || ($filesize < MIN_FILE_SIZE) ){
-    Messages::future_warn("Un fichier doit être ni trop lourd, ni trop léger ! Bah là c'était pas ça :P");
+    Messages::future_warn("Un fichier doit être ni trop lourd, ni trop léger (au moins 1Ko) ! Bah là c'était pas ça :P");
     return false;
   }
 
@@ -144,7 +144,7 @@ function getExternalHost($lien){
   if ( strstr($lien, "dropbox.com") || strstr($lien, "db.tt") )
     return "dpbx";
 
-  if ( strstr($lien, "office.live.") )
+  if ( strstr($lien, "office.live.") || strstr($lien, "onedrive.com") )
     return "msof";
 
   if ( strstr($lien, "github.com") || strstr($lien, "github.io") || strstr($lien, "git.io") )

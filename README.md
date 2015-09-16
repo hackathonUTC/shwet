@@ -29,16 +29,12 @@ Permet à un utilisateur de voter +1 ou -1 pour un document :
 #### IN
 On passe en POST :
 * `doc` : l'id du document
-* `user` : l'utilisateur (ya une astuce, demander à Mewen)
 * `val` : +1 ou -1
 
 #### OUT
-On reçoit un des résultats parmis :
-* "erreur" : val est incorrecte ou bien un des paramètres est vide
-* "unknown user" : l'user transmis est incorrect
-* "erreur : une requete interne a echoue" : l'insertion qui vient d'être faite n'est pas visible (erreur impossible normalement)
-* "faut attendre" : l'utilisateur a fait sa dernière action il y a moins d'une minute, il faut attendre ! (ça ne remet pas le minuteur à 0)
-* 1 ou -1 : le vote a fonctionné, on retourne val
+On reçoit un résultat en JSON du type :
+* { "result": STRING, ["value": STRING|"rank": INT, "user_rank": INT]}
+où le `result` peut être `error` ou `success`. Si c'est une `error`, `value` donne un message de justification affichable. Si c'est un `success`, `rank` et `user_rank` retournent respectivement le score total du document et l'appréciation (+/- 1) de l'utilisateur.
 
 
 ### *getdocs.php*
@@ -46,7 +42,6 @@ Permet à un utilisateur de voter +1 ou -1 pour un document :
 #### IN
 On passe en POST :
 * `uv` : la référence de l'UV
-* `user` : l'utilisateur (pareil, demander à Mewen)
 
 #### OUT
 On reçoit un json qui est un tableau d'objets (chaque objet est un document) :
