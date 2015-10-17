@@ -98,8 +98,13 @@ function verifyDoc($p){
   // Vérifications :
   // taille fichier
   $filesize = filesize($_FILES['fichierUpload']['tmp_name']);
-  if ( ($filesize > MAX_FILE_SIZE) || ($filesize < MIN_FILE_SIZE) ){
-    Messages::future_warn("Un fichier doit être ni trop lourd, ni trop léger ! Bah là c'était pas ça :P");
+  if ($filesize > MAX_FILE_SIZE){
+    Messages::future_warn("Un fichier doit pas être trop lourd (15Mo maxi) ! Si besoin <a href='http://smallpdf.com/' target='_blank'>smallpdf</a> a un très bon compresseur de pdf ;)");
+    return false;
+  }
+
+  if ($filesize < MIN_FILE_SIZE){
+    Messages::future_warn("Un fichier doit pas être trop léger (0,5Ko minimum), merci :)");
     return false;
   }
 
@@ -192,7 +197,7 @@ if (isset($_POST['submitted_doc']) && !empty($_POST['submitted_doc'])) {
 
     // création du dossier si nécessaire
     if (!is_dir( $path )){
-      if (!mkdir( $path , 0744, true)){
+      if (!mkdir( $path , 0755, true)){
         Messages::future_error("Erreur lors de la création du dossier '".$path."' :/ (c'est pas ta faute ^^ envoie juste un mail à shwet@assos.utc.fr)");
       } else {
         Messages::debug("Dossier ".$path." créé :) ");

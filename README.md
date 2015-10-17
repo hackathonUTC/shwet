@@ -4,12 +4,16 @@
 
 ###*Fonctionnalités disponibles :*
 * Consultation des documents par UV/Branche
+* Vote +1/-1 pour les documents
+* Upload de fichiers et ajout de liens vers des documents en ligne
+
 
 ###*Fonctionnalités souhaitées :* 
-* Ajout des icônes pour les liens externes
-* Ajout de fichier (+ liens vers annales collaboratives), support des commentaires (compléter upload.php)
-* Ajouter le reste dans anciens documents au site
+* Tri des documents par nom, note ou vote
+* Support des commentaires (compléter upload.php)
 * Système de pad pour le travail en commun capitalisé
+* Page d'administration (ajout, modif, suppression d'un document ou d'une UV)
+* Outils d'upload amélioré : barre de progression, réutilisation des paramètres UV, type et semestre de l'ajout précédent
 
 ###*Bugs :*
 * Corriger les bugs de :hovers

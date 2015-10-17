@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="row-fluid">
-		<div class="span12">
+		<div class="span12" style="margin-top: 120px;">
 				<div class="hero-unit">
 					<h1>Bienvenue sur le nouveau Shwet.</h1>
 					<p>Shwet IS BACK ! <br>
