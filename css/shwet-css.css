@@ -260,10 +260,17 @@ img.upDown {
 	line-height: 40px;
 }
 
-.docName {
+td.docName {
 	text-align: right;
+	line-height: normal;
 }
 
 .disabled {
   opacity: 0.5;
+}
+
+.externalLinkLogo {
+	margin-left: 5px;
+	width: 20px;
+	margin-top: 10px;
 }

@@ -57,9 +57,9 @@
           <div class="form-group">
             <input name="semestre"  class="form-control" id ="semestre" required type ="text" placeholder="Semestre"><br>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <input name="commentaire"  class="form-control" id ="commentaire" type ="text" placeholder="Commentaire"><br>
-          </div>
+          </div> -->
           <div class="form-group">
             <input type="file"  class="form-control" name="fichierUpload" id="fichierUpload" required/>
           </div>
@@ -105,9 +105,9 @@
           <div class="form-group">
             <input name="semestre"  class="form-control" id ="semestre" required type ="text" placeholder="Semestre"><br>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <input name="commentaire"  class="form-control" id ="commentaire" type ="text" placeholder="Commentaire"><br>
-          </div>
+          </div> -->
           <div class="form-group">
              <input required name="lien"  class="form-control" id ="lien" type ="text" placeholder="Lien vers le document"><br>
           </div>

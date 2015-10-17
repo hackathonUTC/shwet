@@ -149,7 +149,7 @@ function getExternalHost($lien){
   if ( strstr($lien, "dropbox.com") || strstr($lien, "db.tt") )
     return "dpbx";
 
-  if ( strstr($lien, "office.live.") )
+  if ( strstr($lien, "office.live.") || strstr($lien, "onedrive.com") )
     return "msof";
 
   if ( strstr($lien, "github.com") || strstr($lien, "github.io") || strstr($lien, "git.io") )

@@ -53,7 +53,7 @@
                   <a class= "dropdown-toggle" href="?page=contact">Nous contacter</a>
                 </li>
                 <li class="dropdown">
-                  <a class= "dropdown-toggle" href="#" onclick="javascript:alert('Fonctionnalité en cours de développement')">Envoyer un fichier</a>
+                  <a class= "dropdown-toggle" href="?page=ajout&amp;u=<?php echo $_GET["u"]; ?>">Envoyer un fichier</a>
                 </li>
                 <li class="divider-vertical"></li>
                 <li class="dropdown">

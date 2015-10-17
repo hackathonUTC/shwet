@@ -262,23 +262,32 @@ if(pageType=="uv"){
 		td = document.createElement('td');
 		td.className = "docName";
 		a = document.createElement("a");
-		if ( type[0] = 'l' ){
+		if ( docs[i].type[0] == "l" ){
 			// c'est un lien externe
 			a.href = "http://bit.ly/"+docs[i].id;
 			a.setAttribute("target", "_blank");
 		} else {
 			// c'est un document héberg
 			a.href = "docs/" + docs[i].uv + "/" + docs[i].type + "/" + docs[i].id + "." + docs[i].extension;
+			if ( docs[i].extension != "pdf")
+				a.setAttribute("download", "");
 		}
 		console.log(docs[i]);
 		a.appendChild(document.createTextNode(docs[i].nom));
 		td.appendChild(a);
+		if ( ["ggdv", "dpbx", "msof", "gith", "fb"].indexOf(docs[i].extension) > -1 ) {
+			var img = document.createElement("img");
+			img.src = "img/" + docs[i].extension + ".png";
+			img.className = "externalLinkLogo";
+			td.appendChild(img);
+		};
 		tr.appendChild(td);
 		var td2 = document.createElement('td');
-		td2.appendChild( document.createTextNode(docs[i].semestre) );
+		if (docs[i].semestre != null)
+			td2.appendChild( document.createTextNode(docs[i].semestre) );
 		tr.appendChild(td2);
 		td3 = document.createElement('td');
-		if (docs[i].note !== "0"){
+		if ((docs[i].note !== "0") && (docs[i].note !== null)){
 			td3.appendChild( document.createTextNode(docs[i].note) );
 		}
 		tr.appendChild( td3 );
